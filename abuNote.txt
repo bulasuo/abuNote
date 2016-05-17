@@ -23,6 +23,12 @@ $ git pull origin master
 提交本地版本到远程版本库
 $ git push -u origin master 或者 $ git push origin master
 
+clone 远程版本库  到父目录clone到子目录(远程库)
+$ git clone git@github.com:bulasuo/abuNote.git
+
+已经有remote地址 可以
+$ git remote rm origin清除
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 
