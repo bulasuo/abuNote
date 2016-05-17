@@ -1,0 +1,49 @@
+git:
+本地文件夹创建版本库
+$ git init
+
+本地文件的预加载 和 说明 和提交
+$ git add file1.txt
+$ git add file2.txt file3.txt
+$ git commit -m "add 3 files."
+
+远程仓库创建与关联 创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：
+$ ssh-keygen -t rsa -C "youremail@example.com"
+你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。
+如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：
+然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容：
+
+关联版本库
+$ git remote add origin git@github.com:bulasuo/abuHttp.git
+
+把远程厂库更新到此
+$ git pull origin master
+
+提交本地版本到远程版本库
+$ git push -u origin master 或者 $ git push origin master
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+1.根activity的back键要拦截并且重定义为Home键功能
+public boolean onKeyDown(int keyCode, KeyEvent event) {
+		 
+	if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() ==KeyEvent.ACTION_DOWN) {
+			this.startActivity(new Intent(Intent.ACTION_MAIN).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).addCategory(Intent.CATEGORY_HOME));
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+2.需要重用的activity设为singleInstance 并且拦截他的 back键 重定义为要跳转到的activity
+  
+3.back键默认是要finish当前activity的
+4.FLAG为FLAG_ACTIVITY_NEW_TASK的时候会查找是否与他本身有相同taskAffinity的task，如有则宿主到该task 否则 新建本身的taskAffinity 的task。
+5.一个task为 home键右边任务栏的一个任务的选项卡（singleInstance除外），task之间可以互相叠加，重新排列
+6.taskAffinity不设置则 一个application有一个task，所有activity都宿主到该task，task也有taskAffinity，默认值为根activity的taskAffinity，而根activity的taskAffinity默认为application的taskAffinity，application的taskAffinity未设置 则为 包名。
+7.singleInstance的activity会新建task但是不会另建任务选项卡，现在模拟下面这种情况：
+新建application，依次启动activity a、b、c 这时默认task堆栈《task是堆栈先进后出、队列是先进先出》为abc ,这时启动singleInstance 的activity d、 变成abcd 并且abc为默认task，d单独一个task，且该task有且仅有一个activity d。这时d startActivity 到 b， 这时会变成 dab《为什么会这样请看第5条》，d为一个task，ab为默认task，back键按2次会回到d， 但是你想想 a  activity是application的根activity通常是登入界面 或者 欢迎界面 而从a  back键后 居然回到 d！这会让用户感到奇怪。怎么处理？  看上面 第一条 重定义 a 的back键为home键 或者 a的back键 销毁所有。
+
