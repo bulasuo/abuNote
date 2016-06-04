@@ -32,6 +32,10 @@ $ git remote rm origin清除
 /////////////////////////////////////////////////////////////////////////////////////////
 
 
+android事件分发:
+viewGroup的onInterceptTouchEvent（是否拦截）-子View的dispatchTouchEvent（是否消费）-onTouch（是否消费）-onTouchEvent（是否消费）-onClick
+
+MVP M设计成单例  P设计成单例  V本身作为参数调用P  P回调V ；P本身作为参数调用M   M回调P  . 现有逻辑x ，1设计Mx处理x，2设计接口Ix 定义Mx回调的方法同时也是V要实现的接口，3Ix作为Mx处理x的方法的参数 ，4P本身实现Ix，本身作为参数调用Mx
 
 
 
