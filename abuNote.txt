@@ -1,4 +1,9 @@
 git:
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000
+http://blog.csdn.net/god_wot/article/details/10522405
+http://www.cnblogs.com/alanalan/archive/2012/09/17/2689747.html
+
+
 本地文件夹创建版本库
 $ git init
 
