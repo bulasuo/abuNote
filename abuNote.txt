@@ -1,3 +1,10 @@
+
+
+
+
+
+/////////////////////////////////////////////////////////////
+git - android studio教程 :http://my.oschina.net/u/2367628/blog/508283
 git:
 本地文件夹创建版本库
 $ git init
@@ -33,6 +40,20 @@ $ git remote rm origin清除
 
 
 
+ui 更新 不要调用 网络请求
+网络请求 在 用户点击 或者 广播接收处 调用
+每个网络请求  发送精确描述改 请求结果的 message.what
+每个 广播接收处 要注册 改页面 需要接收的 精确描述的 message.what
+页面数据放在arguments里 且中间的状态 也要 在此切换(尽量)
+页面 :  数据放在argments;数据持久到本地?;数据恢复;
+请求防刷要写在在网络底层ActionTimer
+请求结果要过滤 再显示否?持久化否?
+一个模型 比如user,逻辑写到user一个地方
+
+
+清空连接证书  cmd: net use *  /del /y
+然后 可以用的账号密码:  1.dev - 111  2.test - 111
+其中前者权限大
 
 
 1.根activity的back键要拦截并且重定义为Home键功能
@@ -52,4 +73,29 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
 6.taskAffinity不设置则 一个application有一个task，所有activity都宿主到该task，task也有taskAffinity，默认值为根activity的taskAffinity，而根activity的taskAffinity默认为application的taskAffinity，application的taskAffinity未设置 则为 包名。
 7.singleInstance的activity会新建task但是不会另建任务选项卡，现在模拟下面这种情况：
 新建application，依次启动activity a、b、c 这时默认task堆栈《task是堆栈先进后出、队列是先进先出》为abc ,这时启动singleInstance 的activity d、 变成abcd 并且abc为默认task，d单独一个task，且该task有且仅有一个activity d。这时d startActivity 到 b， 这时会变成 dab《为什么会这样请看第5条》，d为一个task，ab为默认task，back键按2次会回到d， 但是你想想 a  activity是application的根activity通常是登入界面 或者 欢迎界面 而从a  back键后 居然回到 d！这会让用户感到奇怪。怎么处理？  看上面 第一条 重定义 a 的back键为home键 或者 a的back键 销毁所有。
+///////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * 1.activity创建view
+ * 2.activity创建presenter<数据格式>(参数view)
+ * 3.presenter在被创建的时候,即presenter的构造方法中持有了view,此时设置view持有本presenter,完成V-P的互相持有
+ * 4.view要实现基view的多个方法,这里是 protected abstract int getContentViewLayoutID();//基view用来绑定布局文件
+ * 和protected abstract void setViewCreated(@Nullable Bundle savedInstanceState);
+ * //基view用来create view 并且要注意使用Bundle savedInstanceState恢复view
+ * 5.view要实现基view(Interface)的多个方法,这里是 setProgressIndicator(boolean active)//被presenter在任务前回调
+ * loadCompelete(Object O)//被presenter在任务完成时回调
+ * loadError(int code, Exception e)//被presenter在任务出错时回调
+ * setPresenter(BaseContract.Presenter presenter)//被view在创建时回调 用来持有一个presenter
+ * 6.view 要重写android系统父view的onStart() 通过P启动task;  要重写android系统父view的onDestroyView() 销毁P
+ * 7.Presenter 要实现基Presenter的多个方法 这里是  loadMore(boolean next)//被view在加载更多时回调
+ * 和 start(Context appContext)//被view启动任务时回调
+ * 和 destroy()//view被销毁时 回调销毁本presenter
+ * 其他一些逻辑业务的方法  给view与用户交互时回调
+ */
 
+
+MVP进阶:
+对象调用M
+方法传递 都用对象做参数 并且该对象涉及到的逻辑的 引用都让该对象持有, 注意该对象只持有与数据 逻辑有关的东西 不持有view实例 或实例
+
+ArrayList<ReceiptAddressBean> mReceiptAddressBeanList = new Gson().fromJson(response.get(Constant.Key.RESPONSE_OBJECTS).toString(),
+                        new TypeToken<ArrayList<ReceiptAddressBean>>(){}.getType());
