@@ -48,6 +48,11 @@ MVP M设计成单例  P设计成单例  V本身作为参数调用P  P回调V ；P本身作为参数调用M   
 而Fragment的show 和 hidden  不会触发 onResume 等生命周期 但会触发onHidden
 所以在onHidden里调用onResume 基本可以实现 和activity一样的逻辑
 
+数据加载重要逻辑原则:数据标志位的重要性 && NullPointException进行异常捕获(特别是不确定是数据,比如网络请求来的数据,一定要空指针异常捕获)
+不显示数据到UI可以依据 1.数据为空 2.数据标志位为不显示
+显示数据到UI 一定要是 1.数据不为空 且 2.数据标志位为显示
+(就是说要显示到UI 一定要有标志位 为显示,仅仅依靠数据为不为null  可能数据的子数据为null,所以一定要对NullPointException进行异常捕获)
+
 泛型类的优势:
 比如写了一个CallBack类是用泛型的,当用到改类的时候已经指定了类型参数,所以可以在该CallBack类里面对回调方法传的参数进行ClassCaseException异常捕获
 而如果没有指定泛型,那就要在每个实现该回调方法的地方进行ClassCaseException异常捕获,这样非常繁琐.
