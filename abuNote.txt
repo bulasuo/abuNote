@@ -48,6 +48,9 @@ MVP M设计成单例  P设计成单例  V本身作为参数调用P  P回调V ；P本身作为参数调用M   
 而Fragment的show 和 hidden  不会触发 onResume 等生命周期 但会触发onHidden
 所以在onHidden里调用onResume 基本可以实现 和activity一样的逻辑
 
+泛型类的优势:
+比如写了一个CallBack类是用泛型的,当用到改类的时候已经指定了类型参数,所以可以在该CallBack类里面对回调方法传的参数进行ClassCaseException异常捕获
+而如果没有指定泛型,那就要在每个实现该回调方法的地方进行ClassCaseException异常捕获,这样非常繁琐.
 
 ui 更新 不要调用 网络请求
 网络请求 在 用户点击 或者 广播接收处 调用
