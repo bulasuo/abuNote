@@ -53,6 +53,10 @@ MVP M设计成单例  P设计成单例  V本身作为参数调用P  P回调V ；P本身作为参数调用M   
 显示数据到UI 一定要是 1.数据不为空 且 2.数据标志位为显示
 (就是说要显示到UI 一定要有标志位 为显示,仅仅依靠数据为不为null  可能数据的子数据为null,所以一定要对NullPointException进行异常捕获)
 
+RecycleView的总结:
+JsonObject.get("city_name")当该字段为null 它可能不为null 但是把它打印出来System.out.println(JsonObject.get("city_name"));结果是null 并且JsonObject.get("city_name").getAsString会报异常,所以这种应该尽量将JsonObject转换为Bean对象使用,或者在 onBindViewHolder(CoreViewHolder holder, int position) 最外面一层加个try{},不然的话一有异常RecycleView就会不正常具体表现是数据混乱,显示不正常.或者不要用JsonObject.get("city_name").getAsString而用JsonObject.get("city_name").toString.replace("\"", "");这里一定要注意 以后取值  要注意null空异常 或者在最外面加个try{}把业务上不应该为null的打印出来
+
+
 泛型类的优势:
 比如写了一个CallBack类是用泛型的,当用到改类的时候已经指定了类型参数,所以可以在该CallBack类里面对回调方法传的参数进行ClassCaseException异常捕获
 而如果没有指定泛型,那就要在每个实现该回调方法的地方进行ClassCaseException异常捕获,这样非常繁琐.
