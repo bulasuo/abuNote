@@ -7,6 +7,9 @@
 git - android studio教程 :http://my.oschina.net/u/2367628/blog/508283
 git:
 本地文件夹创建版本库
+
+git branch --set-upstream master origin/master
+
 $ git init
 
 本地文件的预加载 和 说明 和提交
