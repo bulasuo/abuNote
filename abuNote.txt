@@ -36,6 +36,25 @@ $ git clone git@github.com:bulasuo/abuNote.git
 已经有remote地址 可以
 $ git remote rm origin清除
 
+Git鼓励大量使用分支：
+查看分支：git branch
+创建分支：git branch <name>
+切换分支：git checkout <name>
+创建+切换分支：git checkout -b <name>
+合并某分支到当前分支：git merge <name>
+删除分支：git branch -d <name>
+
+标签TAG:
+命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
+git tag可以查看所有标签。
+git push origin <tagname>可以推送一个本地标签；
+git push origin --tags可以推送全部未推送过的本地标签；
+git tag -d <tagname>可以删除一个本地标签；
+git push origin :refs/tags/<tagname>可以删除一个远程标签。
+git checkout <tag>回退到tag的代码 但是要注意当前代码可能会丢失(切换到tag历史记录会处在分离头指针状态，这个是的修改是很危险的，在切换回主线时如果没有合并，之前的修改提交基本都会丢失，如果需要修改可以尝试git checkout -b branch tag创建一个基于指定tag的分支，例如：git checkout -b tset v0.1.0  这个时候就会在分支上进行开发，之后可以切换到主线合并)
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 
