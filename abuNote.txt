@@ -1,3 +1,10 @@
+
+
+
+
+
+/////////////////////////////////////////////////////////////
+git - android studio½Ì³Ì :http://my.oschina.net/u/2367628/blog/508283
 git:
 http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000
 http://blog.csdn.net/god_wot/article/details/10522405
@@ -5,6 +12,9 @@ http://www.cnblogs.com/alanalan/archive/2012/09/17/2689747.html
 
 
 ±¾µØÎÄ¼ş¼Ğ´´½¨°æ±¾¿â
+
+git branch --set-upstream master origin/master
+
 $ git init
 
 ±¾µØÎÄ¼şµÄÔ¤¼ÓÔØ ºÍ ËµÃ÷ ºÍÌá½»
@@ -34,6 +44,25 @@ $ git clone git@github.com:bulasuo/abuNote.git
 ÒÑ¾­ÓĞremoteµØÖ· ¿ÉÒÔ
 $ git remote rm originÇå³ı
 
+Git¹ÄÀø´óÁ¿Ê¹ÓÃ·ÖÖ§£º
+²é¿´·ÖÖ§£ºgit branch
+´´½¨·ÖÖ§£ºgit branch <name>
+ÇĞ»»·ÖÖ§£ºgit checkout <name>
+´´½¨+ÇĞ»»·ÖÖ§£ºgit checkout -b <name>
+ºÏ²¢Ä³·ÖÖ§µ½µ±Ç°·ÖÖ§£ºgit merge <name>
+É¾³ı·ÖÖ§£ºgit branch -d <name>
+
+±êÇ©TAG:
+ÃüÁîgit tag <name>ÓÃÓÚĞÂ½¨Ò»¸ö±êÇ©£¬Ä¬ÈÏÎªHEAD£¬Ò²¿ÉÒÔÖ¸¶¨Ò»¸öcommit id£»
+git tag -a <tagname> -m "blablabla..."¿ÉÒÔÖ¸¶¨±êÇ©ĞÅÏ¢£»
+git tag -s <tagname> -m "blablabla..."¿ÉÒÔÓÃPGPÇ©Ãû±êÇ©£»
+git tag¿ÉÒÔ²é¿´ËùÓĞ±êÇ©¡£
+git push origin <tagname>¿ÉÒÔÍÆËÍÒ»¸ö±¾µØ±êÇ©£»
+git push origin --tags¿ÉÒÔÍÆËÍÈ«²¿Î´ÍÆËÍ¹ıµÄ±¾µØ±êÇ©£»
+git tag -d <tagname>¿ÉÒÔÉ¾³ıÒ»¸ö±¾µØ±êÇ©£»
+git push origin :refs/tags/<tagname>¿ÉÒÔÉ¾³ıÒ»¸öÔ¶³Ì±êÇ©¡£
+git checkout <tag>»ØÍËµ½tagµÄ´úÂë µ«ÊÇÒª×¢Òâµ±Ç°´úÂë¿ÉÄÜ»á¶ªÊ§(ÇĞ»»µ½tagÀúÊ·¼ÇÂ¼»á´¦ÔÚ·ÖÀëÍ·Ö¸Õë×´Ì¬£¬Õâ¸öÊÇµÄĞŞ¸ÄÊÇºÜÎ£ÏÕµÄ£¬ÔÚÇĞ»»»ØÖ÷ÏßÊ±Èç¹ûÃ»ÓĞºÏ²¢£¬Ö®Ç°µÄĞŞ¸ÄÌá½»»ù±¾¶¼»á¶ªÊ§£¬Èç¹ûĞèÒªĞŞ¸Ä¿ÉÒÔ³¢ÊÔgit checkout -b branch tag´´½¨Ò»¸ö»ùÓÚÖ¸¶¨tagµÄ·ÖÖ§£¬ÀıÈç£ºgit checkout -b tset v0.1.0  Õâ¸öÊ±ºò¾Í»áÔÚ·ÖÖ§ÉÏ½øĞĞ¿ª·¢£¬Ö®ºó¿ÉÒÔÇĞ»»µ½Ö÷ÏßºÏ²¢)
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
    /**
@@ -57,6 +86,42 @@ viewGroupµÄonInterceptTouchEvent£¨ÊÇ·ñÀ¹½Ø£©-×ÓViewµÄdispatchTouchEvent£¨ÊÇ·ñÏû·
 
 MVP MÉè¼Æ³Éµ¥Àı  PÉè¼Æ³Éµ¥Àı  V±¾Éí×÷Îª²ÎÊıµ÷ÓÃP  P»Øµ÷V £»P±¾Éí×÷Îª²ÎÊıµ÷ÓÃM   M»Øµ÷P  . ÏÖÓĞÂß¼­x £¬1Éè¼ÆMx´¦Àíx£¬2Éè¼Æ½Ó¿ÚIx ¶¨ÒåMx»Øµ÷µÄ·½·¨Í¬Ê±Ò²ÊÇVÒªÊµÏÖµÄ½Ó¿Ú£¬3Ix×÷ÎªMx´¦ÀíxµÄ·½·¨µÄ²ÎÊı £¬4P±¾ÉíÊµÏÖIx£¬±¾Éí×÷Îª²ÎÊıµ÷ÓÃMx
 
+Ò»¸öactivityattachÁË¶à¸öFragmentºó,FragmentµÄonResume»áËæactivityµÄonResume¶ø´¥·¢ ²»¹ÜÊÇ²»ÊÇisHidden;ËùÒÔÔÚFragmentµÄ onResumeÀïÈç¹ûµ¯³ö¼üÅÌ ÒªÅĞ¶ÏÊÇ²»ÊÇ ishidden;
+¶øFragmentµÄshow ºÍ hidden  ²»»á´¥·¢ onResume µÈÉúÃüÖÜÆÚ µ«»á´¥·¢onHidden
+ËùÒÔÔÚonHiddenÀïµ÷ÓÃonResume »ù±¾¿ÉÒÔÊµÏÖ ºÍactivityÒ»ÑùµÄÂß¼­
+
+Êı¾İ¼ÓÔØÖØÒªÂß¼­Ô­Ôò:Êı¾İ±êÖ¾Î»µÄÖØÒªĞÔ && NullPointException½øĞĞÒì³£²¶»ñ(ÌØ±ğÊÇ²»È·¶¨ÊÇÊı¾İ,±ÈÈçÍøÂçÇëÇóÀ´µÄÊı¾İ,Ò»¶¨Òª¿ÕÖ¸ÕëÒì³£²¶»ñ)
+²»ÏÔÊ¾Êı¾İµ½UI¿ÉÒÔÒÀ¾İ 1.Êı¾İÎª¿Õ 2.Êı¾İ±êÖ¾Î»Îª²»ÏÔÊ¾
+ÏÔÊ¾Êı¾İµ½UI Ò»¶¨ÒªÊÇ 1.Êı¾İ²»Îª¿Õ ÇÒ 2.Êı¾İ±êÖ¾Î»ÎªÏÔÊ¾
+(¾ÍÊÇËµÒªÏÔÊ¾µ½UI Ò»¶¨ÒªÓĞ±êÖ¾Î» ÎªÏÔÊ¾,½ö½öÒÀ¿¿Êı¾İÎª²»Îªnull  ¿ÉÄÜÊı¾İµÄ×ÓÊı¾İÎªnull,ËùÒÔÒ»¶¨Òª¶ÔNullPointException½øĞĞÒì³£²¶»ñ)
+
+RecycleViewµÄ×Ü½á:
+JsonObject.get("city_name")µ±¸Ã×Ö¶ÎÎªnull Ëü¿ÉÄÜ²»Îªnull µ«ÊÇ°ÑËü´òÓ¡³öÀ´System.out.println(JsonObject.get("city_name"));½á¹ûÊÇnull ²¢ÇÒJsonObject.get("city_name").getAsString»á±¨Òì³£,ËùÒÔÕâÖÖÓ¦¸Ã¾¡Á¿½«JsonObject×ª»»ÎªBean¶ÔÏóÊ¹ÓÃ,»òÕßÔÚ onBindViewHolder(CoreViewHolder holder, int position) ×îÍâÃæÒ»²ã¼Ó¸ötry{},²»È»µÄ»°Ò»ÓĞÒì³£RecycleView¾Í»á²»Õı³£¾ßÌå±íÏÖÊÇÊı¾İ»ìÂÒ,ÏÔÊ¾²»Õı³£.»òÕß²»ÒªÓÃJsonObject.get("city_name").getAsString¶øÓÃJsonObject.get("city_name").toString.replace("\"", "");ÕâÀïÒ»¶¨Òª×¢Òâ ÒÔºóÈ¡Öµ  Òª×¢Òânull¿ÕÒì³£ »òÕßÔÚ×îÍâÃæ¼Ó¸ötry{}°ÑÒµÎñÉÏ²»Ó¦¸ÃÎªnullµÄ´òÓ¡³öÀ´
+
+
+·ºĞÍÀàµÄÓÅÊÆ:
+±ÈÈçĞ´ÁËÒ»¸öCallBackÀàÊÇÓÃ·ºĞÍµÄ,µ±ÓÃµ½¸ÄÀàµÄÊ±ºòÒÑ¾­Ö¸¶¨ÁËÀàĞÍ²ÎÊı,ËùÒÔ¿ÉÒÔÔÚ¸ÃCallBackÀàÀïÃæ¶Ô»Øµ÷·½·¨´«µÄ²ÎÊı½øĞĞClassCaseExceptionÒì³£²¶»ñ
+¶øÈç¹ûÃ»ÓĞÖ¸¶¨·ºĞÍ,ÄÇ¾ÍÒªÔÚÃ¿¸öÊµÏÖ¸Ã»Øµ÷·½·¨µÄµØ·½½øĞĞClassCaseExceptionÒì³£²¶»ñ,ÕâÑù·Ç³£·±Ëö.
+
+ui ¸üĞÂ ²»Òªµ÷ÓÃ ÍøÂçÇëÇó
+ÍøÂçÇëÇó ÔÚ ÓÃ»§µã»÷ »òÕß ¹ã²¥½ÓÊÕ´¦ µ÷ÓÃ
+Ã¿¸öÍøÂçÇëÇó  ·¢ËÍ¾«È·ÃèÊö¸Ä ÇëÇó½á¹ûµÄ message.what
+Ã¿¸ö ¹ã²¥½ÓÊÕ´¦ Òª×¢²á ¸ÄÒ³Ãæ ĞèÒª½ÓÊÕµÄ ¾«È·ÃèÊöµÄ message.what
+Ò³ÃæÊı¾İ·ÅÔÚargumentsÀï ÇÒÖĞ¼äµÄ×´Ì¬ Ò²Òª ÔÚ´ËÇĞ»»(¾¡Á¿)
+Ò³Ãæ :  Êı¾İ·ÅÔÚargments;Êı¾İ³Ö¾Ãµ½±¾µØ?;Êı¾İ»Ö¸´;
+ÇëÇó·ÀË¢ÒªĞ´ÔÚÔÚÍøÂçµ×²ãActionTimer
+ÇëÇó½á¹ûÒª¹ıÂË ÔÙÏÔÊ¾·ñ?³Ö¾Ã»¯·ñ?
+Ò»¸öÄ£ĞÍ ±ÈÈçuser,Âß¼­Ğ´µ½userÒ»¸öµØ·½
+Ò³Ãæ±à³ÌµÈ Òª¿¼ÂÇ ÀÁ¼ÓÔØ»¹ÊÇÏÈ¼ÓÔØ
+--Âß¼­Ö®¼ä,·½·¨Ö®¼äÒª×¢Òâ½âñî:
+Âß¼­²»ÄÜµ÷Âß¼­ ÍøÂçÇëÇóÀï²»ÄÜµ÷ÓÃÆäËûÍøÂçÇëÇó,Ó¦¸ÃÁíĞ´Ò»¸ö·½·¨ ÁíĞ´Ò»¸öÂß¼­ÔÙÔÚÕâ¸öÂß¼­Àï×éºÏÕâĞ©Âß¼­
+¼´Âß¼­Ö»ÄÜ×éºÏ ¶ø²»ÄÜÏà»¥µ÷ÓÃ!!
+"Âß¼­Ö®¼ä²»Òª»¥Ïàµ÷ÓÃ,Ö»ÄÜ×éºÏËüÃÇĞÎ³ÉĞÂµÄÂß¼­,·½·¨Ö®¼ä²»ÒªÏà»¥ µ÷ÓÃ·½·¨ ¶øÊÇ ×éºÏ·½·¨ĞÎ³ÉĞÂµÄ·½·¨"
+
+
+Çå¿ÕÁ¬½ÓÖ¤Êé  cmd: net use *  /del /y
+È»ºó ¿ÉÒÔÓÃµÄÕËºÅÃÜÂë:  1.dev - 111  2.test - 111
+ÆäÖĞÇ°ÕßÈ¨ÏŞ´ó
 
 
 1.¸ùactivityµÄback¼üÒªÀ¹½Ø²¢ÇÒÖØ¶¨ÒåÎªHome¼ü¹¦ÄÜ
@@ -76,4 +141,29 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
 6.taskAffinity²»ÉèÖÃÔò Ò»¸öapplicationÓĞÒ»¸ötask£¬ËùÓĞactivity¶¼ËŞÖ÷µ½¸Ãtask£¬taskÒ²ÓĞtaskAffinity£¬Ä¬ÈÏÖµÎª¸ùactivityµÄtaskAffinity£¬¶ø¸ùactivityµÄtaskAffinityÄ¬ÈÏÎªapplicationµÄtaskAffinity£¬applicationµÄtaskAffinityÎ´ÉèÖÃ ÔòÎª °üÃû¡£
 7.singleInstanceµÄactivity»áĞÂ½¨taskµ«ÊÇ²»»áÁí½¨ÈÎÎñÑ¡Ïî¿¨£¬ÏÖÔÚÄ£ÄâÏÂÃæÕâÖÖÇé¿ö£º
 ĞÂ½¨application£¬ÒÀ´ÎÆô¶¯activity a¡¢b¡¢c ÕâÊ±Ä¬ÈÏtask¶ÑÕ»¡¶taskÊÇ¶ÑÕ»ÏÈ½øºó³ö¡¢¶ÓÁĞÊÇÏÈ½øÏÈ³ö¡·Îªabc ,ÕâÊ±Æô¶¯singleInstance µÄactivity d¡¢ ±ä³Éabcd ²¢ÇÒabcÎªÄ¬ÈÏtask£¬dµ¥¶ÀÒ»¸ötask£¬ÇÒ¸ÃtaskÓĞÇÒ½öÓĞÒ»¸öactivity d¡£ÕâÊ±d startActivity µ½ b£¬ ÕâÊ±»á±ä³É dab¡¶ÎªÊ²Ã´»áÕâÑùÇë¿´µÚ5Ìõ¡·£¬dÎªÒ»¸ötask£¬abÎªÄ¬ÈÏtask£¬back¼ü°´2´Î»á»Øµ½d£¬ µ«ÊÇÄãÏëÏë a  activityÊÇapplicationµÄ¸ùactivityÍ¨³£ÊÇµÇÈë½çÃæ »òÕß »¶Ó­½çÃæ ¶ø´Óa  back¼üºó ¾ÓÈ»»Øµ½ d£¡Õâ»áÈÃÓÃ»§¸Ğµ½Ææ¹Ö¡£ÔõÃ´´¦Àí£¿  ¿´ÉÏÃæ µÚÒ»Ìõ ÖØ¶¨Òå a µÄback¼üÎªhome¼ü »òÕß aµÄback¼ü Ïú»ÙËùÓĞ¡£
+///////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * 1.activity´´½¨view
+ * 2.activity´´½¨presenter<Êı¾İ¸ñÊ½>(²ÎÊıview)
+ * 3.presenterÔÚ±»´´½¨µÄÊ±ºò,¼´presenterµÄ¹¹Ôì·½·¨ÖĞ³ÖÓĞÁËview,´ËÊ±ÉèÖÃview³ÖÓĞ±¾presenter,Íê³ÉV-PµÄ»¥Ïà³ÖÓĞ
+ * 4.viewÒªÊµÏÖ»ùviewµÄ¶à¸ö·½·¨,ÕâÀïÊÇ protected abstract int getContentViewLayoutID();//»ùviewÓÃÀ´°ó¶¨²¼¾ÖÎÄ¼ş
+ * ºÍprotected abstract void setViewCreated(@Nullable Bundle savedInstanceState);
+ * //»ùviewÓÃÀ´create view ²¢ÇÒÒª×¢ÒâÊ¹ÓÃBundle savedInstanceState»Ö¸´view
+ * 5.viewÒªÊµÏÖ»ùview(Interface)µÄ¶à¸ö·½·¨,ÕâÀïÊÇ setProgressIndicator(boolean active)//±»presenterÔÚÈÎÎñÇ°»Øµ÷
+ * loadCompelete(Object O)//±»presenterÔÚÈÎÎñÍê³ÉÊ±»Øµ÷
+ * loadError(int code, Exception e)//±»presenterÔÚÈÎÎñ³ö´íÊ±»Øµ÷
+ * setPresenter(BaseContract.Presenter presenter)//±»viewÔÚ´´½¨Ê±»Øµ÷ ÓÃÀ´³ÖÓĞÒ»¸öpresenter
+ * 6.view ÒªÖØĞ´androidÏµÍ³¸¸viewµÄonStart() Í¨¹ıPÆô¶¯task;  ÒªÖØĞ´androidÏµÍ³¸¸viewµÄonDestroyView() Ïú»ÙP
+ * 7.Presenter ÒªÊµÏÖ»ùPresenterµÄ¶à¸ö·½·¨ ÕâÀïÊÇ  loadMore(boolean next)//±»viewÔÚ¼ÓÔØ¸ü¶àÊ±»Øµ÷
+ * ºÍ start(Context appContext)//±»viewÆô¶¯ÈÎÎñÊ±»Øµ÷
+ * ºÍ destroy()//view±»Ïú»ÙÊ± »Øµ÷Ïú»Ù±¾presenter
+ * ÆäËûÒ»Ğ©Âß¼­ÒµÎñµÄ·½·¨  ¸øviewÓëÓÃ»§½»»¥Ê±»Øµ÷
+ */
 
+
+MVP½ø½×:
+¶ÔÏóµ÷ÓÃM
+·½·¨´«µİ ¶¼ÓÃ¶ÔÏó×ö²ÎÊı ²¢ÇÒ¸Ã¶ÔÏóÉæ¼°µ½µÄÂß¼­µÄ ÒıÓÃ¶¼ÈÃ¸Ã¶ÔÏó³ÖÓĞ, ×¢Òâ¸Ã¶ÔÏóÖ»³ÖÓĞÓëÊı¾İ Âß¼­ÓĞ¹ØµÄ¶«Î÷ ²»³ÖÓĞviewÊµÀı »òÊµÀı
+
+ArrayList<ReceiptAddressBean> mReceiptAddressBeanList = new Gson().fromJson(response.get(Constant.Key.RESPONSE_OBJECTS).toString(),
+                        new TypeToken<ArrayList<ReceiptAddressBean>>(){}.getType());
