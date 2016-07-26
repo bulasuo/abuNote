@@ -36,6 +36,21 @@ $ git remote rm origin清除
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
+   /**
+     * Enable extended support library window features.
+     * <p>
+     * This is a convenience for calling
+     * {@link android.view.Window#requestFeature getWindow().requestFeature()}.
+     * </p>
+     *
+     * @param featureId The desired feature as defined in
+     * {@linkplain android.view.Window#requestFeature} or {@link android.support.v4.view.WindowCompat}.
+     * @return Returns true if the requested feature is supported and now enabled.
+     *
+     * @see android.app.Activity#requestWindowFeature
+     * @see android.view.Window#requestFeature
+     */
+
 
 android事件分发:
 viewGroup的onInterceptTouchEvent（是否拦截）-子View的dispatchTouchEvent（是否消费）-onTouch（是否消费）-onTouchEvent（是否消费）-onClick
