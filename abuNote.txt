@@ -79,6 +79,35 @@ Please enter a commit message to explain why this merge is necessary.
 3.按键盘左上角"Esc"
 4.输入":wq",注意是冒号+wq,按回车键即可
 
+///////////////android动画学习//////////////////////////////////////////////////////////////////////////
+//位移动画
+**package android.view.animation;
+layFilter.clearAnimation();
+Animation transIn = AnimationUtils.loadAnimation(getContext(), R.anim.anim_top_in_3s);
+layFilter.startAnimation(transIn);
+//X||Y||透明度缩放
+**package android.animation;
+AnimatorSet set = new AnimatorSet();
+ObjectAnimator animatorA = ObjectAnimator.ofFloat(view, "alpha", 0.7f, 1f);
+animatorA.setDuration(500);
+ObjectAnimator rotationX = ObjectAnimator.ofFloat(view, "scaleX", 0.7f, 1.0f);
+rotationX.setInterpolator(new AccelerateInterpolator());
+rotationX.setDuration(500);
+ObjectAnimator rotationY = ObjectAnimator.ofFloat(view, "scaleY", 0.7f, 1.0f);
+rotationY.setInterpolator(new AccelerateInterpolator());
+rotationY.setDuration(500);
+set.playTogether(animatorA, rotationX, rotationY);
+set.playTogether(animatorA);
+set.start();
+//旋转动画
+ObjectAnimator rotation = ObjectAnimator.ofFloat(mRotationImv,"rotation", mRotation, mRotation +  60);
+mRotation += 60;
+rotation.setDuration(300);
+rotation.setInterpolator(new DecelerateInterpolator());
+rotation.start();
+//Fragment的进入退出动画
+FragmentTransaction.setCustomAnimations(R.anim.anim_right_in_3s, R.anim.anim_left_out_3s);
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
    /**
