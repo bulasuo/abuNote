@@ -1,8 +1,4 @@
 
-
-
-
-
 /////////////////////////////////////////////////////////////
 git - android studio½Ì³Ì :http://my.oschina.net/u/2367628/blog/508283
 git:
@@ -179,3 +175,5 @@ MVP½ø½×:
 
 ArrayList<ReceiptAddressBean> mReceiptAddressBeanList = new Gson().fromJson(response.get(Constant.Key.RESPONSE_OBJECTS).toString(),
                         new TypeToken<ArrayList<ReceiptAddressBean>>(){}.getType());
+ArrayList<ReceiptAddressBean> mReceiptAddressBeanList11 = new Gson().fromJson(response.get(Constant.Key.RESPONSE_OBJECTS).toString(),
+                        new ArrayList<ReceiptAddressBean>().getClass());
