@@ -2,6 +2,10 @@
  * Created by 阿布 on 2016/2/1.
  */
 /////////////////////////////////////////////////////////////
+cmd- 先编译(带依赖jar包编译test.java 然后运行test.class)
+javac -cp .;E:\test\lib\json.jar test.java
+java test
+/////////////////////////////////////////////////////////////
 git - android studio教程 :http://my.oschina.net/u/2367628/blog/508283
 git:
 http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000
