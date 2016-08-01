@@ -51,12 +51,12 @@ Git鼓励大量使用分支：
 查看图线提交历史
 git log --oneline --graph --decorate
 查看分支：git branch
+查看本地和远程分支：git branch -a
 创建分支：git branch <name>
 切换分支：git checkout <name>
 创建+切换分支：git checkout -b <name>
 合并某分支到当前分支：git merge <name>
 删除分支：git branch -d <name>
-查看本地和远程分支：git branch -a
 把远程分支checkout as new local branch
 $ git checkout -b remote_branch origin/remote_branch
 
@@ -83,7 +83,20 @@ Please enter a commit message to explain why this merge is necessary.
 3.按键盘左上角"Esc"
 4.输入":wq",注意是冒号+wq,按回车键即可
 
+///////////////android TextView的自动化填充//////////////////////////////////////////////////////////////////////////
+<string name="age">王明今年 %1$d 岁</string>
+然后设置的时候就可以：
+textView.setText(String.format(mContext.getString(R.string.age), age));
+
 ///////////////android动画学习//////////////////////////////////////////////////////////////////////////
+http://my.oschina.net/Bruce370/blog/493268
+http://blog.csdn.net/feiduclear_up/article/details/45893619
+http://blog.csdn.net/feiduclear_up/article/details/45915377
+http://blog.csdn.net/lmj623565791/article/details/38067475
+//rotationX:围绕X轴旋转
+**ViewPropertyAnimator
+ViewPropertyAnimator animator5 = imageView.animate();
+        animator5.translationX(200).scaleX(2).setDuration(2000).start();
 //位移动画
 **package android.view.animation;
 layFilter.clearAnimation();
