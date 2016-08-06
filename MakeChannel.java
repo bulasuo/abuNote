@@ -1,6 +1,4 @@
-package com.artcm.artcmandroidapp.model;
-
-import java.io.BufferedReader;
+﻿import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -22,9 +20,9 @@ import java.util.zip.ZipOutputStream;
  * Created by abu on 2016/8/6 10:12.
  */
 public class MakeChannel {
-    private static final String CHANNEL_FILE_NAME_KEY = "artcm_";
-    private static final String CHANNELS_FILE_NAME = "artcm_channel.txt";
-    private static final String CHANNELS_FILE_OUT_DIR_NAME = "artcm_channel";
+    private static final String CHANNEL_FILE_NAME_KEY = "test_";
+    private static final String CHANNELS_FILE_NAME = "test_channel.txt";
+    private static final String CHANNELS_FILE_OUT_DIR_NAME = "test_channel";
     private static final int BUFFER_LENGTH = 2 * 1024;
     private static final byte[] BUFFER = new byte[BUFFER_LENGTH];
 
@@ -43,11 +41,11 @@ public class MakeChannel {
         File userDir = new File("");
         String path = userDir.getAbsolutePath();
         System.out.println("--" + path);
-        List channels = getChannels(path + File.separator + "artcm_channel.txt");
+        List channels = getChannels(path + File.separator + "test_channel.txt");
         if(channels != null && channels.size() != 0) {
             File apkFile = getApk(userDir.getAbsoluteFile());
             if(apkFile != null && apkFile.exists()) {
-                File outDir = new File(path, "artcm_channel");
+                File outDir = new File(path, "test_channel");
                 outDir.mkdir();
                 genneryAllChannelsApk(apkFile, channels, outDir);
             } else {
@@ -84,7 +82,7 @@ public class MakeChannel {
                         }
                     }
 
-                    String var12 = "META-INF/artcm_" + (String)channels.get(i);
+                    String var12 = "META-INF/test_" + (String)channels.get(i);
                     ZipEntry channelAppend = new ZipEntry(var12);
                     System.out.println("append: " + channelAppend.getName());
                     append.putNextEntry(channelAppend);
@@ -140,7 +138,7 @@ public class MakeChannel {
 
             return channels;
         } else {
-            System.out.println("channels is not availableartcm_channel.txt");
+            System.out.println("channels is not availabletest_channel.txt");
             return null;
         }
     }
