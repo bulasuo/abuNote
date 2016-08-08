@@ -83,6 +83,22 @@ Please enter a commit message to explain why this merge is necessary.
 3.按键盘左上角"Esc"
 4.输入":wq",注意是冒号+wq,按回车键即可
 
+///////////////java 反射机制//////////////////////////////////////////////////////////////////////////
+getFields()获得某个类的所有的公共（public）的字段，包括父类。 
+getDeclaredFields()获得某个类的所有申明的字段，即包括public、private和proteced，但是不包括父类的申明字段。 
+同样类似的还有getConstructors()和getDeclaredConstructors()，getMethods()和getDeclaredMethods()。
+**改变成员变量值
+Class ownerClass = owner.getClass();  
+Class ownerClass = Class.forName(className);  
+sayClass.getDeclaredField("content").set(say, "小公举");
+**invoke方法
+Method method = ownerClass.getMethod(methodName,argsClass);
+method.invoke(owner, args);
+**实例化对象
+Class newoneClass = Class.forName(className);  
+Constructor cons = newoneClass.getConstructor(argsClass);
+ XX xx = cons.newInstance(args); 
+
 ///////////////android TextView的自动化填充//////////////////////////////////////////////////////////////////////////
 <string name="age">王明今年 %1$d 岁</string>
 然后设置的时候就可以：
