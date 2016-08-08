@@ -90,7 +90,9 @@ getDeclaredFields()获得某个类的所有申明的字段，即包括public、private和proteced，
 **改变成员变量值
 Class ownerClass = owner.getClass();  
 Class ownerClass = Class.forName(className);  
-sayClass.getDeclaredField("content").set(say, "小公举");
+Field field = sayClass.getDeclaredField("content");
+ield.setAccessible(true);//跳过安全检验,防止是private权限 报错:java.lang.IllegalAccessException
+field.set(say, "小公举");
 **invoke方法
 Method method = ownerClass.getMethod(methodName,argsClass);
 method.invoke(owner, args);
@@ -197,6 +199,7 @@ ui 更新 不要调用 网络请求
 "逻辑之间不要互相调用,只能组合它们形成新的逻辑,方法之间不要相互 调用方法 而是 组合方法形成新的方法"
 
 
+
 清空连接证书  cmd: net use *  /del /y
 然后 可以用的账号密码:  1.dev - 111  2.test - 111
 其中前者权限大
@@ -238,6 +241,43 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
  * 其他一些逻辑业务的方法  给view与用户交互时回调
  */
 
+
+android获取当前activity UI线程利用反射 和代理 把 packageManage 成员变量 换成自定义的 代理
+private void initPackageProx() {
+        //获取ActivityThread实例
+        Class<?> activityThreadClazz = null;
+        Method currentActivityThreadMethod = null;
+        try {
+            activityThreadClazz = Class.forName("android.app.ActivityThread", false, getClassLoader());
+            currentActivityThreadMethod = activityThreadClazz.getDeclaredMethod("currentActivityThread");
+            Object activityThreadObject = null;
+            activityThreadObject = currentActivityThreadMethod.invoke(null);
+            //获得原始的IPackageManager
+            Method getPackageManagerMethod = activityThreadClazz.getDeclaredMethod("getPackageManager");
+            Object packageManager = getPackageManagerMethod.invoke(activityThreadObject);
+
+            //生成我们的代理类
+            Class<?> iPackageManagerClazz = Class.forName("android.content.pm.IPackageManager", false, getClassLoader());
+            Object proxy = Proxy.newProxyInstance(getClassLoader(),
+                    new Class[]{iPackageManagerClazz}, new PackageManagerProxy(this, packageManager,getUmChannel(this)));
+            //把原先的IPackageManager替换掉
+            Field packageManagerField = null;
+            packageManagerField = activityThreadClazz.getDeclaredField("sPackageManager");
+            packageManagerField.setAccessible(true);
+            packageManagerField.set(activityThreadObject, proxy);
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
 
 MVP进阶:
 对象调用M
