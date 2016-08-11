@@ -90,6 +90,8 @@ bug应该在master上修改
 这样master和develop都会bug被修改了
 如果在develop上又有一个分支develop_1 则master修改了bug后 应该把master和并到develop上,develop合并到develop_1上.
 即(develop依赖master, develop_1依赖develop,而修改bug要从根源分支修改即master,并且修改完后 依次同步到子分支)
+比如我这次开发的项目 我把email添加到了develop上 这是大错特错的 因为 我的本意是email肯定以后会和并到master 但是如果develop迟迟没用到  那么email也就迟迟和并不到master上了
+所以我应该把email写在master上的  然后在和并master'到develop上的
 
 ///////////////算法的时间复杂度 和 空间复杂度//////////////////////////////////////////////////////////////////////////
 时间复杂度:耗时递增-  常数阶-O(1); 次方阶-O(n^1);O(n^2):O(n^3)....; 指数阶-O(2^n)
