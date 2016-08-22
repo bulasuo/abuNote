@@ -1,0 +1,12 @@
+到mysql的bin目录下
+mysql> USE mysql; -- 切换到 mysql DB
+mysql> SELECT User, Password, Host FROM user; -- 查看现有用户,密码及允许连接的主机
+添加一个新的 root 用户, 密码为空, 只允许 192.168.1.100 连接
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'192.168.1.100' IDENTIFIED BY '' WITH GRANT OPTION;
+mysql> -- @'192.168.1.100'可以替换为@‘%’就可任意ip访问，当然我们也可以直接用 UPDATE 更新 root 用户 Host, 但不推荐, SQL如下:
+mysql> -- UPDATE user SET Host='192.168.1.100' WHERE User='root' AND Host='localhost' LIMIT 1;
+mysql> flush privileges;
+
+修改root密码
+mysql> update user set password=PASSWORD('123456') where user='root';
+mysql> flush privileges;
