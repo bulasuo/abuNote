@@ -1,3 +1,6 @@
+mysql错误码:
+http://www.cnblogs.com/skillCoding/archive/2011/09/07/2169932.html
+http://blog.csdn.net/aidenliu/article/details/5925604
 到mysql的bin目录下
 D:\mysql\bin
 mysqld.exe --install   //安装mysql服务到windows服务列表
@@ -13,3 +16,7 @@ mysql> flush privileges;
 **修改root密码
 mysql> update user set password=PASSWORD('123456') where user='root';
 mysql> flush privileges;
+
+**jdbc连接注意事项****
+jdbc应该在单线程里保持单链接,改线程任务完成后要及时关闭连接释放资源
+一般写的dao层方法会被多线程并发加载调用 应该在方法里及时关闭.
