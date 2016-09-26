@@ -326,6 +326,57 @@ private void initPackageProx() {
         }
     }
 
+
+////////**android事件分发机制///////////////////////////////////////////////////////////
+dispatchTouchEvent,onTouchEvent与onInterceptTouchEvent
+1.首先明白一个常识：View 没有onInterceptTouchEvent事件，而ViewGroup这三个事件都有，是viewgroup继承View之后才加了一个方法叫onIntercepTouchEvent。
+从字面意思可以看出，onInterceptTouchEvent是拦截器，用来拦截事件用的,dispatchTouchEvent是用来分发事件的，onTouchEvent是用来处理事件的。
+大家不难看出，应该是先走dispatchTouchEvent然后走onTouchEvent。那OnInterceptTouchEven的调用时机是什么时候呢？为了更好的理解这三个事件，我们从简单到复杂，先从一个子view，一个viewgroup,然后viewgroup里有子view。
+
+2.针对一个View来讲，事件是先走该View的dispatchTouchEvent，然后再走onTouchEvent(也有可能不走)。
+
+什么时候不会走onTouchEvent呢？当重写dispatchTouchEvent,不走super.dispatchTouchEvent直接返回false，它就不会走onTouchEvent。
+当然这样做是违反android架构常理的，一般的dispatchTouchEvent是不建议重写的。不过通过这个案例我们可以总结出这么一个结论.
+
+在事件到达view的时候，先走dispatchTouchEvent，在系统的dispatchTouchEvent中它会调用该view的Ontouch方法如果此onTouch方法的down事件里返回true，则
+
+dispatchTouchEvent方法也返回true，且把以后的move事件,up事件都传给onTouch。之后的move事件及up事件的返回值，onTouch返回什么dispatchTouchEvent也返回什么。
+
+相反如果传第一个down事件给ontouch的时候，ontouch返回的是false,从此事件不再会传过来，也就是不会走dispatchTouchEvent。更不会走ontouchevent
+3.针对一个ViewGroup来讲(没有子view的时候)：
+
+事件的走向是dispatchTouchEvent->onInterceptTouchEvent->onTouchEvent
+
+我们会发现它们的逻辑跟view 的没什么两样，只是在走down事件的时候onInterceptTouchEvent会在中间，而这里不管onInterceptTouchEvent返回什么都不会干扰它像2.形容的那
+
+样运行，难道onInterceptTouchEvent这个方法没用？
+
+4.当Viewgroup里有子view的时候
+
+
+down事件走向:viewgroup.dispatchTouchEvent->viewgroup.onInterceptTouchEvent ->如果返回true->viewgroup.onTouch-------------------------------分支1
+                                                                                                                                  |->如果返回false->view.dispatchTouchEvent分支2
+
+
+
+分支1：之后的move或up事件的走向是:viewgroup.dispatchTouchEvent->viewgroup.ontouch  这里不管ontouch返回的是什么都是这个走向
+
+分支2：down事件到了view.dispatchTouchEvent->view.onTouch->返回true->分支3
+                                                                                                   |->返回false->viewgroup.ontouch->返回true->move,up等事件viewgroup.dispatchTouchEvent-
+                                                                                                                                                          |->返回false,则该viewgroup不会再收到后续事件了
+>viewgroup.ontouch
+
+
+分支3：子view的onTOuch返回true了，表示子view能接受该事件，今后的事件走向是
+
+Move:viewgroup.dispatchTouchEvent->viewgroup.onInterceptTouchEvent返回？
+
+如果返回的是false，以后的move,up都这么走viewgroup.dispatchTouchEvent->viewgroup.onInterceptTouchEvent->view.dispatchTouchEvent->view.ontouch
+
+如果返回的是true，抢夺子view的move事件接下来的走向是:强制传Cancel事件和UP事件给view,view.dispatchTouchEvent->view.ontouch(无视它返回什么)->然后把Move事件留给viewgroup:viewgroup.dispatchTouchEvent->viewgroup.ontouch
+
+这个现象大家应该在listview或是scrollview里见过，就是当用户在scrollview里按住一个按钮，发现按钮做了相应反应（按钮高亮了），但当按住不放拖它时，发现界面在滚动，这就是因为onInterceptTouchEvent抢事件了！
+///////////////////////////////////////////////////////////////////
 MVP进阶:
 对象调用M
 方法传递 都用对象做参数 并且该对象涉及到的逻辑的 引用都让该对象持有, 注意该对象只持有与数据 逻辑有关的东西 不持有view实例 或实例
