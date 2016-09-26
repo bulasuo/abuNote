@@ -76,6 +76,17 @@ HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git r
 穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
 
+文件内容搜索:
+git grep xmmap
+显示行号:
+git grep -n xmmap
+只显示文件名:
+git grep --name-only xmmap
+可以查看每个文件有多少行:
+git grep -c xmmap
+特定版本的文件内容查找:
+git grep xmmap v1.5.0
+
 Please enter a commit message to explain why this merge is necessary.
 请输入提交消息来解释为什么这种合并是必要的
 1.按键盘字母 i 进入insert模式
@@ -92,6 +103,11 @@ bug应该在master上修改
 即(develop依赖master, develop_1依赖develop,而修改bug要从根源分支修改即master,并且修改完后 依次同步到子分支)
 比如我这次开发的项目 我把email添加到了develop上 这是大错特错的 因为 我的本意是email肯定以后会和并到master 但是如果develop迟迟没用到  那么email也就迟迟和并不到master上了
 所以我应该把email写在master上的  然后在和并master'到develop上的
+
+
+///////////////java异常处理//////////////////////////////////////////////////////////////////////////
+throw 只是告诉调用者要进行异常捕获,就算,没有throw 遇到异常还是一层层向上传递,最多传递到进程导致进程错误退出
+每个方法开头都要对此方法的参数以及需要用到的成员变量做null检查
 
 ///////////////算法的时间复杂度 和 空间复杂度//////////////////////////////////////////////////////////////////////////
 时间复杂度:耗时递增-  常数阶-O(1); 次方阶-O(n^1);O(n^2):O(n^3)....; 指数阶-O(2^n)
