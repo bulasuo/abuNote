@@ -130,6 +130,26 @@ for(i=1;i<=n;i++)
 **空间复杂度O(1)，表示所需空间为常量，并且与n无关。
 一般很少有次方阶 和 指数阶的  有的话说明方法写得很烂
 
+////////////////android ViewHolder 利用setTag保存holder提高效率//////////////////////////////////////////////////////////////////
+@Override
+      public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO 自动生成的方法存根
+        ViewHolder holder;
+        if(convertView == null)
+        {
+          convertView = mInflater.inflate(R.layout.item, null);
+          holder = new ViewHolder();
+          holder.imageView = (ImageView)convertView.findViewById(R.id.imageView);
+          holder.textView = (TextView)convertView.findViewById(R.id.textView);
+          convertView.setTag(holder);
+        }
+        holder = (ViewHolder)convertView.getTag();
+        
+        holder.imageView.setImageResource(imageId[position]);
+        holder.textView.setText(title[position]);
+        return convertView;
+      }
+
 ///////////////java 反射机制//////////////////////////////////////////////////////////////////////////
 getFields()获得某个类的所有的公共（public）的字段，包括父类。 
 getDeclaredFields()获得某个类的所有申明的字段，即包括public、private和proteced，但是不包括父类的申明字段。 
