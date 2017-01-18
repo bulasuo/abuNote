@@ -1,6 +1,8 @@
 /**
  * Created by 阿布 on 2016/2/1.
+ Artcm2015  Artcm@2015
  */
+ Microsoft Team Foundation Server
 /////////////////////////////////////////////////////////////
 cmd- 先编译(带依赖jar包编译test.java 然后运行test.class)
 javac -cp .;E:\test\lib\json.jar test.java
@@ -104,6 +106,11 @@ bug应该在master上修改
 比如我这次开发的项目 我把email添加到了develop上 这是大错特错的 因为 我的本意是email肯定以后会和并到master 但是如果develop迟迟没用到  那么email也就迟迟和并不到master上了
 所以我应该把email写在master上的  然后在和并master'到develop上的
 
+2017/1/18////////////////////// 记录分界线/////////////////////////////////////////////////////////////////////////////////
+CoordinatorLayout      ::最大拦截事件的协调器
+ViewOffsetBehavior    ::行为
+ViewOffsetHelper   :: bindView 然后组织view的行为
+这3者协调view的行为很有用
 
 ///////////////java异常处理//////////////////////////////////////////////////////////////////////////
 throw 只是告诉调用者要进行异常捕获,就算,没有throw 遇到异常还是一层层向上传递,最多传递到进程导致进程错误退出
