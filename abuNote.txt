@@ -118,6 +118,9 @@ usage: apkpatch -f <new> -t <old> -o <output> -k <keystore> -p <***> -a <alias> 
  -p,--kpassword <***>   keystore password.
  -t,--to <loc>          old Apk file path.
 
+生成补丁::
+apkpatch -f xiaomi_signed2.apk -t xiaomi_signed.apk -o E:\0220\andfix\apkpatch-1.0.3 -k artcm.jks -p Cninfox123 -a artcm -e artcm123
+
 给apk签名::
 jarsigner -verbose -keystore artcm.jks -storepass Cninfox123 -signedjar xiaomi_signed.apk -digestalg SHA1 -sigalg MD5withRSA xiaomi.apk artcm(artcm 指别名keyAlias)
 
