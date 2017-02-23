@@ -107,6 +107,20 @@ bug应该在master上修改
 所以我应该把email写在master上的  然后在和并master'到develop上的
 
 2017/1/18////////////////////// 记录分界线/////////////////////////////////////////////////////////////////////////////////
+阿里热更新 andfix
+usage: apkpatch -f <new> -t <old> -o <output> -k <keystore> -p <***> -a <alias> -e <***>
+ -a,--alias <alias>     keystore entry alias.
+ -e,--epassword <***>   keystore entry password.
+ -f,--from <loc>        new Apk file path.
+ -k,--keystore <loc>    keystore path.
+ -n,--name <name>       patch name.
+ -o,--out <dir>         output dir.
+ -p,--kpassword <***>   keystore password.
+ -t,--to <loc>          old Apk file path.
+
+给apk签名::
+jarsigner -verbose -keystore artcm.jks -storepass Cninfox123 -signedjar xiaomi_signed.apk -digestalg SHA1 -sigalg MD5withRSA xiaomi.apk artcm(artcm 指别名keyAlias)
+
 http://blog.csdn.net/xiaohai0504/article/details/7598178
 查看证书的信息:
 keytool -list -v -keystore e:\keytool\yushan.keystore -storepass 123456
