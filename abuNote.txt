@@ -107,6 +107,29 @@ bug应该在master上修改
 所以我应该把email写在master上的  然后在和并master'到develop上的
 
 2017/1/18////////////////////// 记录分界线/////////////////////////////////////////////////////////////////////////////////
+http://blog.csdn.net/xiaohai0504/article/details/7598178
+查看证书的信息:
+keytool -list -v -keystore e:\keytool\yushan.keystore -storepass 123456
+查看apk证书:
+将apk 的META-INF文件夹解压出来，得到其中的CERT.RSA文件 然后用keytool工具
+keytool -printcert -file META-INF/CERT.RSA
+//////////////////////////notes/////////////////////////////////////////////////////////////////////
+1.异步线程里的回调方法中用到本线程里的成员时要判断本线程里的成员还在否,
+比如UI线程里的activity当回调时,可能ui组件已经被销毁,这时就要判断组件还在否
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+I/System.out: ::getFilesDir-/data/data/com.artcm.artcmandroidapp/files
+I/System.out: ::getCacheDir-/data/data/com.artcm.artcmandroidapp/cache
+I/System.out: ::getExternalStorageDirectory-/storage/emulated/0
+I/System.out: ::getExternalFilesDir("Music")-/storage/emulated/0/Android/data/com.artcm.artcmandroidapp/files/Music
+I/System.out: ::getExternalCacheDir-/storage/emulated/0/Android/data/com.artcm.artcmandroidapp/cache
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+每个界面写launch(from,其他属性)方法
+///////////java中的三种取整函数//////////////////////////////////////////////////////////////////////////////////////
+舍掉小数取整:Math.floor(3.5)=3
+四舍五入取整:Math.rint(3.5)=4
+进位取整:Math.ceil(3.1)=4 
+//////////安卓事件传递利器/////////////////////////////////////////////////////////////////////////////////////////////////////
 CoordinatorLayout      ::最大拦截事件的协调器
 ViewOffsetBehavior    ::行为
 ViewOffsetHelper   :: bindView 然后组织view的行为
