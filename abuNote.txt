@@ -108,6 +108,12 @@ bug应该在master上修改
 
 2017/1/18////////////////////// 记录分界线/////////////////////////////////////////////////////////////////////////////////
 阿里热更新 andfix
+::
+不同版本号的两个apk 不可以打出补丁文件
+打出的补丁文件可以用在其他版本号的应用
+要根据当前版本号来检查,有新版本就整包更新 否则 打且只打打上本版本号的补丁
+so补丁包要带上打出补丁的apk的版本号
+
 usage: apkpatch -f <new> -t <old> -o <output> -k <keystore> -p <***> -a <alias> -e <***>
  -a,--alias <alias>     keystore entry alias.
  -e,--epassword <***>   keystore entry password.
