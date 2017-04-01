@@ -3,6 +3,8 @@
  Artcm2015  Artcm@2015
  */
  Microsoft Team Foundation Server
+
+ 测试图片地址 : http://img.ivsky.com/img/bizhi/slides/201612/25/january_2017-005.jpg
 /////////////////////////////////////////////////////////////
 cmd- 先编译(带依赖jar包编译test.java 然后运行test.class)
 javac -cp .;E:\test\lib\json.jar test.java
@@ -107,6 +109,19 @@ bug应该在master上修改
 所以我应该把email写在master上的  然后在和并master'到develop上的
 
 2017/1/18////////////////////// 记录分界线/////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////业务逻辑大总结//////////////////////////////////////////////////////////////////////////////////////////
+1.异步的活动要注意异步间状态的通知(否则出现上下文不存在的异常)::  异步任务要订阅activity和fragment 的destory状态, 比如网络请求的回调中可能上下文已经消失
+2.对于网络请求后返回的数据操作要做同步机制,比如recycleView.adapter的 List<>data,,否则后期对他的处理有异常
+3.activity 的launch()方法写在activity里面
+4.写代码要注意 分别出代码块的依赖主体, 因为依赖的主体异常,各种状态会导致依赖者的异常, 比如Context上下文, activity,fragment上启动dialog, show的时候上下文已经finish 而异常
+5.public static DialogCityPicker getInstance(Activity activity, OnChangeListener listener) {
+        if (instance == null || activity != mContext)//这里 activity != mContext一定要写,因为这个单例的依赖是activity 而activity会变,比如launMode为standard的activity,两次进同一个activity页面,他们的activity实例不是同一个,并且上一个activity实例已经销毁,所以这里的单例的上下文就已经销毁了
+            instance = new DialogCityPicker(activity);
+        return instance;
+    }
+ 6.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 非自动变量: 非自动释放的变量 如全局变量 ,静态变量
 自动变量: 局部变量
 根据编译器不同情况有所不同，例如写死循环while(true)有的编译器会傻傻的每次都把true做一下判断，所以一般用for（;;）写死循环比较好
@@ -145,9 +160,9 @@ usage: apkpatch -f <new> -t <old> -o <output> -k <keystore> -p <***> -a <alias> 
 apkpatch -f xiaomi_signed2.apk -t xiaomi_signed.apk -o E:\0220\andfix\apkpatch-1.0.3 -k artcm.jks -p Cninfox123 -a artcm -e artcm123
 
 给apk签名::
-jarsigner -verbose -keystore artcm.jks -storepass Cninfox123 -signedjar xiaomi_signed.apk -digestalg SHA1 -sigalg MD5withRSA xiaomi.apk artcm(artcm 指别名keyAlias)
-
-http://blog.csdn.net/xiaohai0504/article/details/7598178
+jarsigner -verbose -keystore ..\artcm.jks -storepass Cninfox123 -signedjar xiaomi_signed.apk -digestalg SHA1 -sigalg MD5withRSA xiaomi.apk artcm(artcm 指别名keyAlias)
+artcm123
+参考资料:  http://blog.csdn.net/xiaohai0504/article/details/7598178
 查看证书的信息:
 keytool -list -v -keystore e:\keytool\yushan.keystore -storepass 123456
 查看apk证书:
