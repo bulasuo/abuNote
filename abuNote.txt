@@ -2,7 +2,16 @@
  * Created by 阿布 on 2016/2/1
  *Artcm2015  Artcm@2015
  */
+
+ @Deprecated  //过时的
+ {@link 类}
+ {@link #方法()}
+
+
  Microsoft Team Foundation Server
+
+adb命令
+ adb shell dumpsys activity top//参看当前手机的top activity
 
  测试图片地址 : http://img.ivsky.com/img/bizhi/slides/201612/25/january_2017-005.jpg
 /////////////////////////////////////////////////////////////
@@ -68,7 +77,7 @@ $ git checkout -b remote_branch origin/remote_branch
 命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
 git tag -a <tagname> -m "blablabla..."可以指定标签信息；
 git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
-git tag可以查看所有标签。
+git tag -n可以查看所有标签。
 git push origin <tagname>可以推送一个本地标签；
 git push origin --tags可以推送全部未推送过的本地标签；
 git tag -d <tagname>可以删除一个本地标签；
@@ -132,6 +141,27 @@ bug应该在master上修改
     }
 
 }
+13.将不需要序列化的属性前添加关键字transient
+14.
+     全局变量:    使用static 关键字进行声明的变量
+     成员变量：还有就是方法外的变量。生命周期与类相同。
+     局部变量：就是方法中的变量。生命周期就是再次方法中
+     对象销毁后 非静态成员变量会变成null依次嵌套
+
+15.//定义一个共有的静态方法，返回该类型实例
+    public static SingletonTest getIstance() { 
+        // 对象实例化时与否判断（不使用同步代码块，instance不等于null时，直接返回对象，提高运行效率）
+        if (instance == null) {
+            //同步代码块（对象未初始化时，使用同步代码块，保证多线程访问时对象在第一次创建后，不再重复被创建）
+            synchronized (SingletonTest.class) {
+                //未初始化，则初始instance变量
+                if (instance == null) {
+                    instance = new SingletonTest();   
+                }   
+            }   
+        }   
+        return instance;   
+    } 
 
 
 
@@ -527,3 +557,72 @@ MVP进阶:
 
 ArrayList<ReceiptAddressBean> mReceiptAddressBeanList = new Gson().fromJson(response.get(Constant.Key.RESPONSE_OBJECTS).toString(),
                         new TypeToken<ArrayList<ReceiptAddressBean>>(){}.getType());
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+System.out.println("0::"+ Build.BOARD);
+System.out.println("1::"+ Build.getRadioVersion());
+System.out.println("2::"+ Build.USER);
+System.out.println("3::"+ Build.UNKNOWN);
+System.out.println("4::"+ Build.TYPE);
+System.out.println("5::"+ Build.TAGS);
+System.out.println("6::"+ Build.BOOTLOADER);
+System.out.println("7::"+ Build.BRAND);
+System.out.println("8::"+ Build.DEVICE);
+System.out.println("9::"+ Build.DISPLAY);
+System.out.println("10::"+ Build.FINGERPRINT);
+System.out.println("11::"+ Build.HARDWARE);
+System.out.println("12::"+ Build.HOST);
+System.out.println("13::"+ Build.ID);
+System.out.println("14::"+ Build.MANUFACTURER);
+System.out.println("15::"+ Build.MODEL);
+System.out.println("16::"+ Build.PRODUCT);
+System.out.println("17::"+ Build.SERIAL);
+
+System.out: 0::PRO6
+System.out: 1::MOLY.LR11.W1539.MD.MP.V12.2.P112, 2016/11/15 10:11
+System.out: 2::flyme
+System.out: 3::unknown
+System.out: 4::user
+System.out: 5::release-keys
+System.out: 6::unknown
+System.out: 7::Meizu
+System.out: 8::PRO6
+System.out: 9::Flyme 6.0.2.0A
+System.out: 10::Meizu/meizu_PRO6/PRO6:6.0/MRA58K/1488739624:user/release-keys
+System.out: 11::mt6797
+System.out: 12::mz-builder-4
+System.out: 13::MRA58K
+System.out: 14::Meizu
+System.out: 15::PRO 6s
+System.out: 16::meizu_PRO6
+System.out: 17::80SQBDPS229M8
+
+SUPPORTED_64_BIT_ABIS=[Ljava.lang.String;@405df1d
+versionCode=140
+BOARD=PRO6
+BOOTLOADER=unknown
+TYPE=user
+ID=MRA58K
+TIME=1484500146000
+BRAND=Meizu
+TAG=Build
+SERIAL=80SQBDPS229M8
+HARDWARE=mt6797
+SUPPORTED_ABIS=[Ljava.lang.String;@de90592
+CPU_ABI=arm64-v8a
+RADIO=unknown
+IS_DEBUGGABLE=false
+MANUFACTURER=Meizu
+SUPPORTED_32_BIT_ABIS=[Ljava.lang.String;@88d4bf4
+TAGS=release-keys
+CPU_ABI2=
+UNKNOWN=unknown
+USER=flyme
+FINGERPRINT=Meizu/meizu_PRO6/PRO6:6.0/MRA58K/1484499894:user/release-keys
+HOST=Mz-Builder-l10
+PRODUCT=meizu_PRO6
+versionName=1.4.0
+DISPLAY=Flyme 6.0.1.0A
+MODEL=PRO 6s
+DEVICE=PRO6
