@@ -11,7 +11,17 @@ test
  Microsoft Team Foundation Server
 
 adb命令
+ 常用退出 shell命令: exit;bye;quit
+ su: 判断是否root
+ adb root手机:http://blog.csdn.net/hellworl/article/details/7078184
  adb shell dumpsys activity top//参看当前手机的top activity
+ 
+ adb shell
+ run-as com.example.android //对应包名   
+ ls查看当前目录下的所有文件，找到shared_prefs
+ cd shared_prefs
+ ls 查看所有的 sharedpreferences 文件 
+ cat XXX.xml 查看指定的SP 
 
  测试图片地址 : http://img.ivsky.com/img/bizhi/slides/201612/25/january_2017-005.jpg
 /////////////////////////////////////////////////////////////
@@ -162,8 +172,21 @@ bug应该在master上修改
         }   
         return instance;   
     } 
-
-
+16.http://www.cnblogs.com/dolphin0520/p/3919839.html
+设计模式的六大原则
+一.单一职责原则 : 一个类只负责一个功能领域中的相应职责
+二.开闭原则 : 对扩展开放，对修改关闭(写一个基类,多个要扩展的子类继承这个基类)
+三.里氏替换原则 : 尽量用基类
+四.依赖倒置原则 : 要针对接口编程，而不是针对实现编程
+五.接口隔离原则 : 使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它不需要的接口。
+六.迪米特法则 : 不要和“陌生人”说话、只与你的直接朋友通信等
+IOC(控制反转): 类中的成员不要写死,而是用构造注入或者属性注入 或者spring xml配置文件配置注入去控制这个成员
+AOP(面向切面编程,是对oop的一个补充): 把业务中的共用逻辑提取出来,然后大家共用(即实现了横向把逻辑提取出来)
+	如servlet,许多个servlet中有 操作日志,安全监测,事务处理 这三个业务是共用的 就可以横向提取出来
+17.重写:需要继承;重载(同个方法名不同参数);多态(重写就是利用了java的多态性)
+多态的定义：指允许不同类的对象对同一消息做出响应。
+即同一消息可以根据发送对象的不同而采用多种不同的行为方式。（发送消息就是函数调用）
+18.
 
 
  9.内存策略分为 
