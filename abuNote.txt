@@ -86,6 +86,12 @@ git log --oneline --graph --decorate
 删除分支：git branch -d <name>
 把远程分支checkout as new local branch
 $ git checkout -b remote_branch origin/remote_branch
+查看远程地址  git remote -v
+添加上游仓库地址  git remote add upstream URL
+
+对上游仓库的操作
+git fetch upstream
+git merge upstream/master
 
 标签TAG:
 命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
