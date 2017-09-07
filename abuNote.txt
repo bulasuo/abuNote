@@ -50,6 +50,9 @@ $ git init
 $ git add file1.txt
 $ git add file2.txt file3.txt
 $ git commit -m "add 3 files."
+$ git add * git会自动把你当前目录所有修改过的文件添加
+$ git add . Git会递归地将你执行命令时所在的目录中的所有文件添加上去，所以如果你将当前的工作目录作为参数，它就会追踪那儿的所有文件
+
 
 远程仓库创建与关联 创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：
 $ ssh-keygen -t rsa -C "youremail@example.com"
