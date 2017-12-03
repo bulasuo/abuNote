@@ -2,6 +2,12 @@
  * Created by 阿布 on 2016/2/1 9:01
  *Artcm2015  Artcm@2015
  */
+<dependency>
+    <groupId>com.belerweb</groupId>
+    <artifactId>pinyin4j</artifactId>
+    <version>2.5.0</version>
+</dependency>
+implementation 'com.belerweb:pinyin4j:2.5.0'
 工具:
 数据库 dbvisualizer
 
