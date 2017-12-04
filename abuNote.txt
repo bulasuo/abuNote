@@ -1,7 +1,13 @@
-/**
+﻿/**
  * Created by 阿布 on 2016/2/1 9:01
  *Artcm2015  Artcm@2015
  */
+<dependency>
+    <groupId>com.belerweb</groupId>
+    <artifactId>pinyin4j</artifactId>
+    <version>2.5.0</version>
+</dependency>
+implementation 'com.belerweb:pinyin4j:2.5.0'
 工具:
 加固::  http://console.qcloud.com/legu/tool/index
 数据库远程连接   :: dbvisualizer
@@ -99,6 +105,8 @@ $ git remote add origin git@github.com:bulasuo/abuHttp.git
 
 把远程厂库更新到此
 $ git pull origin master
+如果是不同远程仓库
+$ git pull origin master --allow-unrelated-histories
 
 提交本地版本到远程版本库
 $ git push -u origin master 或者 $ git push origin master
