@@ -735,3 +735,10 @@ versionName=1.4.0
 DISPLAY=Flyme 6.0.1.0A
 MODEL=PRO 6s
 DEVICE=PRO6
+
+makeJar::
+0.工程要保留一个包不混淆,用来暴露给用户调用 并且直接调用的第三方依赖逻辑要放到这个包中
+1.android studio 混淆打jar gradlew makeJar
+2.删除依赖的第三方jar 
+3.把第三方jar包,合并到本jar    ::ant -buildfile  ...build.xml
+3.如果遇到包名冲突, jarjar.jar ::java -jar jarjar-1.4.jar process rule.txt volley.jar test.jar
