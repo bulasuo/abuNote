@@ -392,7 +392,8 @@ Constructor cons = newoneClass.getConstructor(argsClass);
 <string name="age">王明今年 %1$d 岁</string>
 然后设置的时候就可以：
 textView.setText(String.format(mContext.getString(R.string.age), age));
-
+%1$s :: 表示字符串
+%1$d :: 表示整形
 ///////////////android动画学习//////////////////////////////////////////////////////////////////////////
 http://my.oschina.net/Bruce370/blog/493268
 http://blog.csdn.net/feiduclear_up/article/details/45893619
