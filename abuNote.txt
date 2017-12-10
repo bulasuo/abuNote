@@ -9,13 +9,19 @@
 </dependency>
 implementation 'com.belerweb:pinyin4j:2.5.0'
 工具:
-数据库 dbvisualizer
-
-
+加固::  http://console.qcloud.com/legu/tool/index
+数据库远程连接   :: dbvisualizer
+数据库设计pdm文件::  powerDesigner
+linux机器远程连接::  SecureCRT
+.bak  备份文件 可删除文件
+Alpha（α）内侧; Beta（β）外测; Gamma（γ）发布候选; Lambda（λ）;
+Unary(一元的);Binary(二元的);ternary(三元的);
 test
  @Deprecated  //过时的
  {@link 类}
  {@link #方法()}
+	Alpha：内测
+	Beta: 外测
 
 
  Microsoft Team Foundation Server
@@ -26,12 +32,26 @@ adb命令
  adb root手机:http://blog.csdn.net/hellworl/article/details/7078184
  adb shell dumpsys activity top//参看当前手机的top activity
  
- adb shell
+ ******************************adb shell*******************************************
+linux远程访问工具: secureCRT
+--help 显示命令提示
+ctrl+c，彻底终止该进程
+ctrl+z   挂起当前进程 (如果需要恢复到前台输入fg，恢复到后台输入bg)
+pwd   查看当前全路径
+cd .. 返回上一级
+cd - ,意思是返回到上次的目录
+cd /  返回根目录
+cd \  返回登录用户目录(root?)
+ls -l 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出
+tail -f 文件  监听文件内容变化
+q     退出打开的文件。
+
  run-as com.example.android //对应包名   
  ls查看当前目录下的所有文件，找到shared_prefs
  cd shared_prefs
  ls 查看所有的 sharedpreferences 文件 
  cat XXX.xml 查看指定的SP 
+**********************************************************************************
 
  测试图片地址 : http://img.ivsky.com/img/bizhi/slides/201612/25/january_2017-005.jpg
 /////////////////////////////////////////////////////////////
@@ -626,6 +646,29 @@ ArrayList<ReceiptAddressBean> mReceiptAddressBeanList = new Gson().fromJson(resp
                         new TypeToken<ArrayList<ReceiptAddressBean>>(){}.getType());
 
 
+<!-- <plugins>
+<plugin>  
+    <groupId>org.apache.maven.plugins</groupId>  
+    <artifactId>maven-dependency-plugin</artifactId>  
+    <executions>  
+	<execution>  
+		<id>copy-dependencies</id>
+	    <phase>prepare-package</phase>  
+	    <goals>  
+		<goal>copy-dependencies</goal>  
+	    </goals>
+	    <configuration>
+		<outputDirectory>target/pettyloanwx/WEB-INF/lib</outputDirectory>
+		<outputDirectory>src/main/webapp/WEB-INF/lib</outputDirectory>
+		<overWriteReleases>false</overWriteReleases>
+		<overWriteSnapshots>false</overWriteSnapshots>
+		<overWriteIfNewer>true</overWriteIfNewer>
+	    </configuration>  
+	</execution>  
+    </executions>  
+</plugin> 
+</plugins> -->
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 System.out.println("0::"+ Build.BOARD);
 System.out.println("1::"+ Build.getRadioVersion());
@@ -693,3 +736,10 @@ versionName=1.4.0
 DISPLAY=Flyme 6.0.1.0A
 MODEL=PRO 6s
 DEVICE=PRO6
+
+makeJar::
+0.工程要保留一个包不混淆,用来暴露给用户调用 并且直接调用的第三方依赖逻辑要放到这个包中
+1.android studio 混淆打jar gradlew makeJar
+2.删除依赖的第三方jar 
+3.把第三方jar包,合并到本jar    ::ant -buildfile  ...build.xml
+3.如果遇到包名冲突, jarjar.jar ::java -jar jarjar-1.4.jar process rule.txt volley.jar test.jar
