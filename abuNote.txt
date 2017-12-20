@@ -431,7 +431,8 @@ Constructor cons = newoneClass.getConstructor(argsClass);
 <string name="age">王明今年 %1$d 岁</string>
 然后设置的时候就可以：
 textView.setText(String.format(mContext.getString(R.string.age), age));
-
+%1$s :: 表示字符串
+%1$d :: 表示整形
 ///////////////android动画学习//////////////////////////////////////////////////////////////////////////
 http://my.oschina.net/Bruce370/blog/493268
 http://blog.csdn.net/feiduclear_up/article/details/45893619
@@ -760,5 +761,18 @@ makeJar::
 1.android studio 混淆打jar gradlew makeJar
 2.删除依赖的第三方jar 
 3.把第三方jar包,合并到本jar    ::ant -buildfile  ...build.xml
+<<<<<<< HEAD
 4.如果遇到包名冲突, jarjar.jar ::java -jar jarjar-1.4.jar process rule.txt volley.jar test.jar
 ::http://blog.csdn.net/lxfhjjsfq/article/details/54583491
+=======
+3.如果遇到包名冲突, jarjar.jar ::java -jar jarjar-1.4.jar process rule.txt volley.jar test.jar
+
+
+http://www.jianshu.com/p/3afbaa5a2ab5?utm_campaign=haruki&utm_content=note&utm_medium=reader_share
+&#32; == 普通的英文半角空格
+&#160; == &nbsp; == &#xA0; == no-break space （普通的英文半角空格但不换行）
+&#12288; == 中文全角空格 （一个中文宽度）    \u3000 (一个中文)
+&#8194; == &ensp; == en空格 （半个中文宽度） \u2002 (半个中文)
+&#8195; == &emsp; == em空格 （一个中文宽度） \u2003
+&#8197; == 四分之一em空格 （四分之一中文宽度 \u2005
+>>>>>>> c6b51c342de922823a32a7a1c783ba3caa2ba3d0
