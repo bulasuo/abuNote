@@ -34,6 +34,8 @@ adb命令
  
  ******************************adb shell*******************************************
 linux远程访问工具: secureCRT
+tab键可以提示补全目录
+
 --help 显示命令提示
 ctrl+c，彻底终止该进程
 ctrl+z   挂起当前进程 (如果需要恢复到前台输入fg，恢复到后台输入bg)
@@ -45,6 +47,20 @@ cd \  返回登录用户目录(root?)
 ls -l 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出
 tail -f 文件  监听文件内容变化
 q     退出打开的文件。
+ps -ef|grep java :: 查看进程
+      {
+	-e 　此参数的效果和指定"A"参数相同。
+	-f 　显示UID,PPIP,C与STIME栏位。 
+	grep命令是查找
+	中间的|是管道命令 是指ps命令与grep同时执行
+	这条命令的意思是显示有关 java 有关的进程
+      }
+kill -9 &{pid}  :: 强制杀死 pid进程
+su :: 切换用户
+ulimit -n 102400 :: ulimit命令用于控制shell程序的资源(-n <文件数目> 指定同一时间最多可开启的文件数。)
+./run.sh    ::  运行run.sh
+sh run.sh   ::  运行run.sh
+
 
  run-as com.example.android //对应包名   
  ls查看当前目录下的所有文件，找到shared_prefs
@@ -82,6 +98,9 @@ git push origin master
 本地文件夹创建版本库
 
 git branch --set-upstream master origin/master
+
+重命名本地分支
+git branch -m oldbranchname newbranchname
 
 $ git init
 
@@ -741,4 +760,5 @@ makeJar::
 1.android studio 混淆打jar gradlew makeJar
 2.删除依赖的第三方jar 
 3.把第三方jar包,合并到本jar    ::ant -buildfile  ...build.xml
-3.如果遇到包名冲突, jarjar.jar ::java -jar jarjar-1.4.jar process rule.txt volley.jar test.jar
+4.如果遇到包名冲突, jarjar.jar ::java -jar jarjar-1.4.jar process rule.txt volley.jar test.jar
+::http://blog.csdn.net/lxfhjjsfq/article/details/54583491
