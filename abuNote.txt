@@ -37,6 +37,7 @@ linux远程访问工具: secureCRT
 tab键可以提示补全目录
 
 --help 显示命令提示
+常用退出 shell命令: exit;bye;quit
 ctrl+c，彻底终止该进程
 ctrl+z   挂起当前进程 (如果需要恢复到前台输入fg，恢复到后台输入bg)
 pwd   查看当前全路径
@@ -433,6 +434,8 @@ Constructor cons = newoneClass.getConstructor(argsClass);
 textView.setText(String.format(mContext.getString(R.string.age), age));
 %1$s :: 表示字符串
 %1$d :: 表示整形
+%1$08.2f ::两位小数,整数自动补零,宽度8字符  456.995 -> 00457.00
+%1$8.2s :: 取左边2位,8字符宽度,右对齐(%1$-8.2s :: 左对齐)  "456.995"  ->  "      45"
 ///////////////android动画学习//////////////////////////////////////////////////////////////////////////
 http://my.oschina.net/Bruce370/blog/493268
 http://blog.csdn.net/feiduclear_up/article/details/45893619
