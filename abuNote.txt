@@ -142,7 +142,7 @@ Git鼓励大量使用分支：
 查看图线提交历史
 git log --oneline --graph --decorate
 查看分支：git branch
-查看本地和远程分支(先更新一下远程的分支引用到本地)：$ git fetch $ git branch -a
+查看本地和远程分支(先更新一下远程的分支引用到本地)：$ git fetch $ git branch -a  https://www.cnblogs.com/ToDoToTry/p/4095626.html
 创建分支：git branch <name>
 切换分支：git checkout <name>
 创建+切换分支：git checkout -b <name>
