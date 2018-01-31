@@ -2,6 +2,7 @@
  * Created by 阿布 on 2016/2/1 9:01
  *Artcm2015  Artcm@2015
  */
+
 <dependency>
     <groupId>com.belerweb</groupId>
     <artifactId>pinyin4j</artifactId>
@@ -26,6 +27,11 @@ test
 
  Microsoft Team Foundation Server
 
+ windows cmd
+ arp -a 列出局域网所有ip mac
+ net view 列出网段所有pc_name
+ ping pc_name 查看pc ip
+
 adb命令
  常用退出 shell命令: exit;bye;quit
  su: 判断是否root
@@ -39,7 +45,7 @@ tab键可以提示补全目录
 --help 显示命令提示
 常用退出 shell命令: exit;bye;quit
 ctrl+c，彻底终止该进程
-ctrl+z   挂起当前进程 (如果需要恢复到前台输入fg，恢复到后台输入bg)
+ctrl+z   暂停进程, 挂起当前进程 (如果需要恢复到前台输入fg，恢复到后台输入bg)
 pwd   查看当前全路径
 cd .. 返回上一级
 cd - ,意思是返回到上次的目录
@@ -232,12 +238,13 @@ bug应该在master上修改
      局部变量：就是方法中的变量。生命周期就是再次方法中
      对象销毁后 非静态成员变量会变成null依次嵌套
 
-15.//定义一个共有的静态方法，返回该类型实例
+15.//定义一个共有的静态方法，返回该类型实例 单例
+    private final Object mLock = new Object();
     public static SingletonTest getIstance() { 
         // 对象实例化时与否判断（不使用同步代码块，instance不等于null时，直接返回对象，提高运行效率）
         if (instance == null) {
             //同步代码块（对象未初始化时，使用同步代码块，保证多线程访问时对象在第一次创建后，不再重复被创建）
-            synchronized (SingletonTest.class) {
+            synchronized (mLock) {
                 //未初始化，则初始instance变量
                 if (instance == null) {
                     instance = new SingletonTest();   
@@ -266,6 +273,10 @@ AOP(面向切面编程,是对oop的一个补充): 把业务中的共用逻辑提
 	3)对参数进行 sql语句检测 update,select,and,;,等等
  对于网站被劫持脚本注入,重写钓鱼页面,盗取用户名密码 应该采取https协议 防止劫持
  对于c/s架构可以不用https 但是自己采用ssl协议 写加密传输
+19.private transient String passwd; 不被序列化  http://www.importnew.com/21517.html
+
+
+
 19.静态内部类和非静态内部类之间到底有什么不同呢？下面是两者间主要的不同。
     （1）内部静态类不需要有指向外部类的引用。但非静态内部类需要持有对外部类的引用。
     （2）非静态内部类能够访问外部类的静态和非静态成员。静态类不能访问外部类的非静态成员。他只能访问外部类的静态成员。
