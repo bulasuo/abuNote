@@ -2,6 +2,12 @@
  * Created by 阿布 on 2016/2/1 9:01
  *Artcm2015  Artcm@2015
  */
+android studio wifi连接手机
+adb devices  -列出所有已经连接设备
+adb connect 10.129.49.143
+adb devices 10.129.49.143
+
+<如果拒绝非积极连接> adb tcpip 5555
 
 <dependency>
     <groupId>com.belerweb</groupId>
@@ -15,7 +21,7 @@ implementation 'com.belerweb:pinyin4j:2.5.0'
 数据库设计pdm文件::  powerDesigner
 linux机器远程连接::  SecureCRT
 .bak  备份文件 可删除文件
-Alpha（α）内侧; Beta（β）外测; Gamma（γ）发布候选; Lambda（λ）;
+Alpha（α）内测; Beta（β）外测; Gamma（γ）发布候选; Lambda（λ）;
 Unary(一元的);Binary(二元的);ternary(三元的);
 test
  @Deprecated  //过时的
@@ -240,6 +246,7 @@ bug应该在master上修改
 
 15.//定义一个共有的静态方法，返回该类型实例 单例
     private final Object mLock = new Object();
+    private volatile SingletonTest instance = null; (volatile 1.立即同步到主内存; 2.保证执行有序性;)
     public static SingletonTest getIstance() { 
         // 对象实例化时与否判断（不使用同步代码块，instance不等于null时，直接返回对象，提高运行效率）
         if (instance == null) {
@@ -779,6 +786,13 @@ makeJar::
 ::http://blog.csdn.net/lxfhjjsfq/article/details/54583491
 
 
+jni/NDK::
+1.到JniDemo.java 的目录下 xx/xx
+2.javac JniDemo.java
+3.javah -classpath E:\cxykz\xintianyoullou\xtyl\xbase\build\intermediates\classes\debug -d jni -jni com.abu.xbase.util.JniDemo
+
+
+
 
 http://www.jianshu.com/p/3afbaa5a2ab5?utm_campaign=haruki&utm_content=note&utm_medium=reader_share
 &#32; == 普通的英文半角空格
@@ -788,3 +802,15 @@ http://www.jianshu.com/p/3afbaa5a2ab5?utm_campaign=haruki&utm_content=note&utm_m
 &#8195; == &emsp; == em空格 （一个中文宽度） \u2003
 &#8197; == 四分之一em空格 （四分之一中文宽度 \u2005
 
+一  月：January    简写:Jan.
+二  月：February   简写:Feb.
+三  月：March      简写:Mar.
+四  月：April      简写:Apr.
+五  月：May        简写:May.
+六  月：June       简写:Jun.
+七  月：July       简写:Jul.
+八  月：August     简写:Aug.
+九  月：September  简写:Sep.
+十  月：October    简写:Oct.
+十一月：November   简写:Nov.
+十二月：December   简写:Dec.
