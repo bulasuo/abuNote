@@ -3,6 +3,8 @@
  *Artcm2015  Artcm@2015
  */
 android studio wifi连接手机
+查看ip
+adb shell netstat
 adb devices  -列出所有已经连接设备
 adb connect 10.129.49.143
 adb devices 10.129.49.143
