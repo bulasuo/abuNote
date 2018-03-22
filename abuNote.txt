@@ -2,6 +2,7 @@
  * Created by 阿布 on 2016/2/1 9:01
  *Artcm2015  Artcm@2015
  */
+ android studio psv 快捷main函数
 android studio wifi连接手机
 查看ip
 adb shell netstat
@@ -456,6 +457,10 @@ textView.setText(String.format(mContext.getString(R.string.age), age));
 %1$d :: 表示整形
 %1$08.2f ::两位小数,整数自动补零,宽度8字符  456.995 -> 00457.00
 %1$8.2s :: 取左边2位,8字符宽度,右对齐(%1$-8.2s :: 左对齐)  "456.995"  ->  "      45"
+/**
+* 宽度5,小数2位,右对齐,左边不足补空格
+*/
+private static final String BlanceFormate = "%5.2f";
 ///////////////android动画学习//////////////////////////////////////////////////////////////////////////
 http://my.oschina.net/Bruce370/blog/493268
 http://blog.csdn.net/feiduclear_up/article/details/45893619
