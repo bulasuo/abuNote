@@ -3,6 +3,16 @@
  * Created by 阿布 on 2016/2/1 9:01
  *Artcm2015  Artcm@2015
  */
+ android studio psv 快捷main函数
+android studio wifi连接手机
+查看ip
+adb shell netstat
+adb devices  -列出所有已经连接设备
+adb connect 10.129.49.143
+adb devices 10.129.49.143
+
+<如果拒绝非积极连接> adb tcpip 5555
+
 <dependency>
     <groupId>com.belerweb</groupId>
     <artifactId>pinyin4j</artifactId>
@@ -15,7 +25,7 @@ implementation 'com.belerweb:pinyin4j:2.5.0'
 数据库设计pdm文件::  powerDesigner
 linux机器远程连接::  SecureCRT
 .bak  备份文件 可删除文件
-Alpha（α）内侧; Beta（β）外测; Gamma（γ）发布候选; Lambda（λ）;
+Alpha（α）内测; Beta（β）外测; Gamma（γ）发布候选; Lambda（λ）;
 Unary(一元的);Binary(二元的);ternary(三元的);
 test
  @Deprecated  //过时的
@@ -26,6 +36,11 @@ test
 
 
  Microsoft Team Foundation Server
+
+ windows cmd
+ arp -a 列出局域网所有ip mac
+ net view 列出网段所有pc_name
+ ping pc_name 查看pc ip
 
 adb命令
  常用退出 shell命令: exit;bye;quit
@@ -40,7 +55,7 @@ tab键可以提示补全目录
 --help 显示命令提示
 常用退出 shell命令: exit;bye;quit
 ctrl+c，彻底终止该进程
-ctrl+z   挂起当前进程 (如果需要恢复到前台输入fg，恢复到后台输入bg)
+ctrl+z   暂停进程, 挂起当前进程 (如果需要恢复到前台输入fg，恢复到后台输入bg)
 pwd   查看当前全路径
 cd .. 返回上一级
 cd - ,意思是返回到上次的目录
@@ -233,12 +248,14 @@ bug应该在master上修改
      局部变量：就是方法中的变量。生命周期就是再次方法中
      对象销毁后 非静态成员变量会变成null依次嵌套
 
-15.//定义一个共有的静态方法，返回该类型实例
+15.//定义一个共有的静态方法，返回该类型实例 单例
+    private final Object mLock = new Object();
+    private volatile SingletonTest instance = null; (volatile 1.立即同步到主内存; 2.保证执行有序性;)
     public static SingletonTest getIstance() { 
         // 对象实例化时与否判断（不使用同步代码块，instance不等于null时，直接返回对象，提高运行效率）
         if (instance == null) {
             //同步代码块（对象未初始化时，使用同步代码块，保证多线程访问时对象在第一次创建后，不再重复被创建）
-            synchronized (SingletonTest.class) {
+            synchronized (mLock) {
                 //未初始化，则初始instance变量
                 if (instance == null) {
                     instance = new SingletonTest();   
@@ -267,6 +284,10 @@ AOP(面向切面编程,是对oop的一个补充): 把业务中的共用逻辑提
 	3)对参数进行 sql语句检测 update,select,and,;,等等
  对于网站被劫持脚本注入,重写钓鱼页面,盗取用户名密码 应该采取https协议 防止劫持
  对于c/s架构可以不用https 但是自己采用ssl协议 写加密传输
+19.private transient String passwd; 不被序列化  http://www.importnew.com/21517.html
+
+
+
 19.静态内部类和非静态内部类之间到底有什么不同呢？下面是两者间主要的不同。
     （1）内部静态类不需要有指向外部类的引用。但非静态内部类需要持有对外部类的引用。
     （2）非静态内部类能够访问外部类的静态和非静态成员。静态类不能访问外部类的非静态成员。他只能访问外部类的静态成员。
@@ -437,6 +458,10 @@ textView.setText(String.format(mContext.getString(R.string.age), age));
 %1$d :: 表示整形
 %1$08.2f ::两位小数,整数自动补零,宽度8字符  456.995 -> 00457.00
 %1$8.2s :: 取左边2位,8字符宽度,右对齐(%1$-8.2s :: 左对齐)  "456.995"  ->  "      45"
+/**
+* 宽度5,小数2位,右对齐,左边不足补空格
+*/
+private static final String BlanceFormate = "%5.2f";
 ///////////////android动画学习//////////////////////////////////////////////////////////////////////////
 http://my.oschina.net/Bruce370/blog/493268
 http://blog.csdn.net/feiduclear_up/article/details/45893619
@@ -765,11 +790,16 @@ makeJar::
 1.android studio 混淆打jar gradlew makeJar
 2.删除依赖的第三方jar 
 3.把第三方jar包,合并到本jar    ::ant -buildfile  ...build.xml
-<<<<<<< HEAD
 4.如果遇到包名冲突, jarjar.jar ::java -jar jarjar-1.4.jar process rule.txt volley.jar test.jar
 ::http://blog.csdn.net/lxfhjjsfq/article/details/54583491
-=======
-3.如果遇到包名冲突, jarjar.jar ::java -jar jarjar-1.4.jar process rule.txt volley.jar test.jar
+
+
+jni/NDK::
+1.到JniDemo.java 的目录下 xx/xx
+2.javac JniDemo.java
+3.javah -classpath E:\cxykz\xintianyoullou\xtyl\xbase\build\intermediates\classes\debug -d jni -jni com.abu.xbase.util.JniDemo
+
+
 
 
 http://www.jianshu.com/p/3afbaa5a2ab5?utm_campaign=haruki&utm_content=note&utm_medium=reader_share
@@ -779,4 +809,16 @@ http://www.jianshu.com/p/3afbaa5a2ab5?utm_campaign=haruki&utm_content=note&utm_m
 &#8194; == &ensp; == en空格 （半个中文宽度） \u2002 (半个中文)
 &#8195; == &emsp; == em空格 （一个中文宽度） \u2003
 &#8197; == 四分之一em空格 （四分之一中文宽度 \u2005
->>>>>>> c6b51c342de922823a32a7a1c783ba3caa2ba3d0
+
+一  月：January    简写:Jan.
+二  月：February   简写:Feb.
+三  月：March      简写:Mar.
+四  月：April      简写:Apr.
+五  月：May        简写:May.
+六  月：June       简写:Jun.
+七  月：July       简写:Jul.
+八  月：August     简写:Aug.
+九  月：September  简写:Sep.
+十  月：October    简写:Oct.
+十一月：November   简写:Nov.
+十二月：December   简写:Dec.
