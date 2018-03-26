@@ -11,7 +11,7 @@ adb devices  -列出所有已经连接设备
 adb connect 10.129.49.143
 adb devices 10.129.49.143
 
-<如果拒绝非积极连接> adb tcpip 5555
+<如果拒绝非积极连接> adb tcpip 5555 PS:要在手机连接条件下
 
 <dependency>
     <groupId>com.belerweb</groupId>
