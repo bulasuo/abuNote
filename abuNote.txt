@@ -1,4 +1,5 @@
-﻿/**
+﻿我的ipad udid::  3684fba2916b4939001041966a9532f80f009ca6
+/**
  * Created by 阿布 on 2016/2/1 9:01
  *Artcm2015  Artcm@2015
  */
