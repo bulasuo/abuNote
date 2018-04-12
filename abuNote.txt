@@ -1,4 +1,13 @@
-﻿我的ipad udid::  3684fba2916b4939001041966a9532f80f009ca6
+﻿常用软件:
+FileZilla Client(ftp文件服务器访问);
+SecureCRT(linux 远程访问);
+Charles.exe(抓包);
+DbVisualizer(数据库访问);
+
+
+
+
+我的ipad udid::  3684fba2916b4939001041966a9532f80f009ca6
 /**
  * Created by 阿布 on 2016/2/1 9:01
  *Artcm2015  Artcm@2015
@@ -38,6 +47,7 @@ test
  Microsoft Team Foundation Server
 
  windows cmd
+ netstat -ano 列出端口占用情况
  arp -a 列出局域网所有ip mac
  net view 列出网段所有pc_name
  ping pc_name 查看pc ip
@@ -84,6 +94,12 @@ sh run.sh   ::  运行run.sh
  cd shared_prefs
  ls 查看所有的 sharedpreferences 文件 
  cat XXX.xml 查看指定的SP 
+
+
+linux 修改文件
+ vi /etc/saikik表示显示/etc/saikik文件的内容。使用键盘上的Page Up和Page Down键可以上下翻页;按下Insert键，可以见到窗口左下角有“Insert”字样，表示当前为插入编辑状态，这时从键盘输入的内容将插入到光标位置;再按下Insert键，左下角将有“Replace”字样，表示当前为替换编辑状态，这时从键盘输入的内容将替换光标位置的内容。编辑完内容后，按下Esc键，并输入“:wq”，然后回车就可以保存退出。
+
+　　如果不想保存而直接退出，则按下Esc键后，输入“:q!”，然后回车即可。“wq”表示Write和Quit，即保存退出;“q!”表示忽略修改强行退出。
 **********************************************************************************
 
  测试图片地址 : http://img.ivsky.com/img/bizhi/slides/201612/25/january_2017-005.jpg
