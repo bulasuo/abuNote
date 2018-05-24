@@ -1,0 +1,23 @@
+MVVM双向绑定::
+public class InputModelData extends BaseObservable
+{
+	private String input = "";
+
+	@Bindable
+	public String getInput()
+	{
+		return input;
+	}
+
+	/**
+	 * 获取设置输入内容（从界面取值，设置到view model）
+	 *
+	 * @param input 输入内容
+	 */
+	public void setInput(String input)
+	{
+		this.input = input;
+		sendEnableState.set(!StringUtils.isEmpty(this.input));
+		notifyPropertyChanged(BR.input);
+	}
+}
