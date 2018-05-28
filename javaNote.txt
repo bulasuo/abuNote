@@ -1,0 +1,11 @@
+
+1.实现业务原子操作
+1)申明
+private final AtomicBoolean mPending = new AtomicBoolean(false);
+2)业务执行前判断原子标志位
+if (mPending.compareAndSet(true, false))
+{
+	doSomething
+}
+3)重置原子标志位
+mPending.set(true);
