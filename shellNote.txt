@@ -1,0 +1,11 @@
+
+adb卸载系统应用 命令步骤：
+::先删除system/app下?.apk 再删除 data/dalvik-cache 下 arm,arm64 缓存  再uninstall 该应用包名
+#adb root ------->进入系统中的根目录，获得系统权限
+#adb remount------->重新挂载系统分区，使系统分区重新可写
+#adb shell------------>进入模拟器的shell模式
+#cd system/app------>进入系统中的app应用目录
+#ls------------>显示当前文件中的APP所有应用的名称
+#cd DreamCalculator ------------------->进入你所想要删除的APK的目录中
+#rm -fr 再加需要删除应用的名称（比如DreamCalculator.apk）------------------->删除对应的apk文件(注：一定要加apk后缀名字)
+#reboot------------>重新启动手机(因为只有重启才能进行应用的删除,注意点!!!!)
