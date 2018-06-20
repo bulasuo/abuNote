@@ -4,6 +4,10 @@ SecureCRT(linux 远程访问);
 Charles.exe(抓包);
 DbVisualizer(数据库访问);
 
+gradlew transformClassesWithMultidexlistForMirrorSafeDebug --stacktrace -debug
+gradlew compileDebug --stacktrace -debug  
+gradlew compileDebug --stacktrace -info
+gradlew 错误类型 --stacktrace -debug
 
 android 安全::
 1. 向Service传递敏感数据时，须验证Service的合法性 判断service的class 路径是自己的
@@ -28,6 +32,13 @@ adb connect 10.129.49.143
 adb devices 10.129.49.143
 
 <如果拒绝非积极连接> adb tcpip 5555 PS:要在手机连接条件下
+
+删除与包相关的所有数据：清除数据和缓存
+adb shell pm clear <PACKAGE>
+
+输出安装包的APK路径
+adb shell pm path <PACKAGE>
+
 
 <dependency>
     <groupId>com.belerweb</groupId>
