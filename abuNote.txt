@@ -4,7 +4,7 @@ SecureCRT(linux 远程访问);
 Charles.exe(抓包);
 DbVisualizer(数据库访问);
 
-gradlew transformClassesWithMultidexlistForMirrorSafeDebug --stacktrace -debug
+gradlew transformClassesWithInstantRunForMirrorSafeDebug --stacktrace -debug
 gradlew compileDebug --stacktrace -debug  
 gradlew compileDebug --stacktrace -info
 gradlew 错误类型 --stacktrace -debug
@@ -27,7 +27,7 @@ android 注解
 android studio wifi连接手机
 查看ip
 adb shell netstat
-adb devices  -列出所有已经连接设备
+adb devices -l  -列出所有已经连接设备
 adb connect 10.129.49.143
 adb devices 10.129.49.143
 
@@ -173,6 +173,8 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
 
 关联版本库
 $ git remote add origin git@github.com:bulasuo/abuHttp.git
+****Push rejected: 
+git push origin HEAD:refs/for/mybranch
 
 把远程厂库更新到此
 $ git pull origin master
@@ -192,6 +194,11 @@ $ git remote rm origin清除
 Git鼓励大量使用分支：
 查看图线提交历史
 git log --oneline --graph --decorate
+
+查看当前commit id:: https://blog.csdn.net/cnmilan/article/details/41281103
+git rev-parse HEAD
+git rev-parse --short HEAD
+
 查看分支：git branch
 查看本地和远程分支(先更新一下远程的分支引用到本地)：$ git fetch $ git branch -a  https://www.cnblogs.com/ToDoToTry/p/4095626.html
 创建分支：git branch <name>
