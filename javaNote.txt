@@ -9,3 +9,12 @@ if (mPending.compareAndSet(true, false))
 }
 3)重置原子标志位
 mPending.set(true);
+
+计算任务全部完成
+CountDownLatch  -> countDownLatch.await();
+
+Matcher m = Pattern.compile(".*filename=(.*)").matcher(disposition.toLowerCase(Locale.ENGLISH));
+if (m.find())
+{
+	return m.group(1);
+}

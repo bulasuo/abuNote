@@ -1,4 +1,25 @@
-MVVM双向绑定::
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+app:hwSkinEnable="true"
+
+1.用MutableLiveData<Boolean> isPlay = new MutableLiveData<Boolean>();的时候,
+要在对应布局文件的对应的ViewDataBinding.setLifecycleOwner(activity/fragment);
+2.回退页面到home getActivity().moveTaskToBack()
+
+3.android:clipChildren="false"; android:clipToPadding="false" recyclerView能用到
+
+android:text="@{HeadCardViewModel.userInfo.state==User.State.STATE_LOGIN_SUCCESS?HeadCardViewModel.userInfo.nickName:@string/click_login}"
+
+//去掉item的动画，防止闪烁
+((SimpleItemAnimator) mChildRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+recyclerView.addItemDecoration(mSuspensionDecoration);
+view.setContentDescription(String arg);
+
+4.
+https://www.cnblogs.com/hack132/p/5539581.html
+fragment.getUserVisibleHint() 
+
+2.MVVM双向绑定::
 public class XData
 {
 

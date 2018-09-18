@@ -1,4 +1,9 @@
-﻿
+﻿adb launch android设置界面
+adb shell am start com.android.settings/com.android.settings.Settings
+有一个插件可以帮助你解决这个烦扰：ADB IDEA,as的一个adb插件
+adb shell pm clear <packagename>
+
+
 https://blog.csdn.net/hevenyin/article/details/79062269
 adb卸载系统应用 命令步骤：
 ::先删除system/app下?.apk 再删除 data/dalvik-cache 下 arm,arm64 缓存  再uninstall 该应用包名
