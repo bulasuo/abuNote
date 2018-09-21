@@ -18,3 +18,5 @@ if (m.find())
 {
 	return m.group(1);
 }
+
+使用 new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();创建Gson对象，没有@Expose注释的属性将不会被序列化.。
