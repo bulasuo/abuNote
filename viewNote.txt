@@ -19,6 +19,12 @@ view.setContentDescription(String arg);
 https://www.cnblogs.com/hack132/p/5539581.html
 fragment.getUserVisibleHint() 
 
+5.
+mBinding = DataBindingUtil.inflate(getInflater(inflater), getContentViewLayout(), container, false);
+mBinding.setLifecycleOwner(this);
+mViewModel = ViewModelProviders.of(this).get(getViewModelClass());
+setBinding(mBinding, mViewModel);
+		
 2.MVVM双向绑定::
 public class XData
 {
