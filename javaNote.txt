@@ -1,3 +1,5 @@
+可以到注解的文件夹下学习一波~
+@CallSuper
 
 1.实现业务原子操作
 1)申明
@@ -20,3 +22,27 @@ if (m.find())
 }
 
 使用 new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();创建Gson对象，没有@Expose注释的属性将不会被序列化.。
+
+/**
+ * 类型定义
+ */
+@StringDef({PAGE_TYPE_1, PAGE_TYPE_2, PAGE_TYPE_3})
+@Retention(RetentionPolicy.SOURCE)
+@interface Type
+{
+}
+
+日志打印::
+private static void maxLog(String tag, String msg) {  
+	//信息太长,分段打印
+	//因为String的length是字符数量不是字节数量所以为了防止中文字符过多，
+	//  把4*1024的MAX字节打印长度改为2001字符数
+	int maxStrLength = 2001 - tag.length();
+	//大于4000时
+	while (msg.length() > maxStrLength) {
+		Logger.debug(tag, msg.substring(0, maxStrLength));
+		msg = msg.substring(maxStrLength);
+	}
+	//剩余部分
+	Logger.debug(tag, msg);
+}

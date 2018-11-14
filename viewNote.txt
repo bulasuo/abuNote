@@ -9,6 +9,7 @@ app:hwSkinEnable="true"
 3.android:clipChildren="false"; android:clipToPadding="false" recyclerView能用到
 
 android:text="@{HeadCardViewModel.userInfo.state==User.State.STATE_LOGIN_SUCCESS?HeadCardViewModel.userInfo.nickName:@string/click_login}"
+android:src="@{safeUnbox(data.checkMode) ? @drawable/ic_public_music_cancel : @drawable/ic_public_music_back}"
 
 //去掉item的动画，防止闪烁
 ((SimpleItemAnimator) mChildRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
@@ -24,6 +25,11 @@ mBinding = DataBindingUtil.inflate(getInflater(inflater), getContentViewLayout()
 mBinding.setLifecycleOwner(this);
 mViewModel = ViewModelProviders.of(this).get(getViewModelClass());
 setBinding(mBinding, mViewModel);
+
+6.view焦点
+beforeDescendants：viewgroup会优先其子类控件而获取到焦点
+afterDescendants：viewgroup只有当其子类控件不需要获取焦点时才获取焦点
+blocksDescendants：viewgroup会覆盖子类控件而直接获得焦点
 		
 2.MVVM双向绑定::
 public class XData
